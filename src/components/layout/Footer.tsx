@@ -1,60 +1,109 @@
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, Facebook, Twitter, Mail, Phone, MapPin, ArrowUpRight, Linkedin } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+    <footer className="relative bg-primary text-primary-foreground overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-navy-light/30 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative container mx-auto px-4 py-16 lg:py-24">
+        {/* Top Section - CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16 lg:mb-24"
+        >
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl mb-6">
+            Ready to Start Your Journey?
+          </h2>
+          <p className="text-primary-foreground/70 max-w-2xl mx-auto mb-8 text-lg">
+            Let us help you make your travel dreams a reality. Contact us today for a free consultation.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-primary font-semibold rounded-xl hover:bg-gold-dark transition-colors group"
+          >
+            Get Free Consultation
+            <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </Link>
+        </motion.div>
+
+        {/* Main Footer Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
           {/* Brand */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-6">
-              <span className="font-heading text-2xl font-semibold">Notting Hill</span>
+              <span className="font-heading text-2xl font-bold">Notting Hill</span>
               <span className="font-heading text-2xl font-light italic text-gold">Voyages</span>
             </div>
-            <p className="font-body text-primary-foreground/70 leading-relaxed mb-6">
-              Crafting extraordinary journeys for discerning travellers. Where every destination becomes an unforgettable story.
+            <p className="font-body text-primary-foreground/70 leading-relaxed mb-8 max-w-sm">
+              Your trusted partner for UK visit visas, student visas, Hajj & Umrah packages, summer school programs, and worldwide travel experiences. We handle everything, you just enjoy.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="p-2 rounded-full bg-primary-foreground/10 hover:bg-gold hover:text-primary transition-all duration-300">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="p-2 rounded-full bg-primary-foreground/10 hover:bg-gold hover:text-primary transition-all duration-300">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="p-2 rounded-full bg-primary-foreground/10 hover:bg-gold hover:text-primary transition-all duration-300">
-                <Twitter className="w-5 h-5" />
-              </a>
+            <div className="flex gap-3">
+              {[
+                { icon: Instagram, href: "#" },
+                { icon: Facebook, href: "#" },
+                { icon: Twitter, href: "#" },
+                { icon: Linkedin, href: "#" },
+              ].map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  className="p-3 rounded-xl bg-primary-foreground/10 hover:bg-gold hover:text-primary transition-all duration-300 group"
+                >
+                  <social.icon className="w-5 h-5" />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Visa Services */}
           <div>
-            <h4 className="font-heading text-lg font-medium mb-6">Explore</h4>
+            <h4 className="font-heading text-lg font-medium mb-6">Visa Services</h4>
             <ul className="space-y-3">
-              {["Destinations", "Experiences", "Luxury Villas", "Private Jets", "Yacht Charters"].map((item) => (
-                <li key={item}>
-                  <Link to="/destinations" className="font-body text-primary-foreground/70 hover:text-gold transition-colors duration-300">
-                    {item}
+              {[
+                { name: "UK Visit Visa", path: "/uk-visa" },
+                { name: "Student Visa", path: "/student-visa" },
+                { name: "Other Countries", path: "/visa-services" },
+                { name: "Document Assistance", path: "/uk-visa" },
+                { name: "Visa Consultation", path: "/contact" },
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.path}
+                    className="font-body text-primary-foreground/70 hover:text-gold transition-colors duration-300 link-underline"
+                  >
+                    {item.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Programs */}
           <div>
-            <h4 className="font-heading text-lg font-medium mb-6">Company</h4>
+            <h4 className="font-heading text-lg font-medium mb-6">Programs</h4>
             <ul className="space-y-3">
               {[
-                { name: "About Us", path: "/about" },
-                { name: "Our Team", path: "/about" },
-                { name: "Testimonials", path: "/about" },
-                { name: "Press", path: "/about" },
-                { name: "Careers", path: "/contact" },
+                { name: "Hajj Packages", path: "/hajj-umrah" },
+                { name: "Umrah Packages", path: "/hajj-umrah" },
+                { name: "Summer Schools", path: "/summer-schools" },
+                { name: "ESL Programs", path: "/summer-schools" },
+                { name: "Travel Packages", path: "/travel-packages" },
               ].map((item) => (
                 <li key={item.name}>
-                  <Link to={item.path} className="font-body text-primary-foreground/70 hover:text-gold transition-colors duration-300">
+                  <Link
+                    to={item.path}
+                    className="font-body text-primary-foreground/70 hover:text-gold transition-colors duration-300 link-underline"
+                  >
                     {item.name}
                   </Link>
                 </li>
@@ -64,25 +113,25 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="font-heading text-lg font-medium mb-6">Contact</h4>
+            <h4 className="font-heading text-lg font-medium mb-6">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-gold mt-0.5 flex-shrink-0" />
                 <span className="font-body text-primary-foreground/70">
-                  123 Portobello Road<br />
-                  Notting Hill, London W11 2QB
+                  Sylhet, Bangladesh<br />
+                  & London, UK
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-gold flex-shrink-0" />
-                <a href="tel:+44123456789" className="font-body text-primary-foreground/70 hover:text-gold transition-colors">
-                  +44 123 456 789
+                <a href="tel:+447123456789" className="font-body text-primary-foreground/70 hover:text-gold transition-colors">
+                  +44 7123 456 789
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-gold flex-shrink-0" />
-                <a href="mailto:hello@nhvoyages.com" className="font-body text-primary-foreground/70 hover:text-gold transition-colors">
-                  hello@nhvoyages.com
+                <a href="mailto:info@nhvoyages.com" className="font-body text-primary-foreground/70 hover:text-gold transition-colors">
+                  info@nhvoyages.com
                 </a>
               </li>
             </ul>
@@ -90,16 +139,19 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-primary-foreground/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-primary-foreground/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-body text-sm text-primary-foreground/50">
-            © {new Date().getFullYear()} Notting Hill Voyages. All rights reserved.
+            © {currentYear} Notting Hill Voyages. All rights reserved.
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             <Link to="/privacy" className="font-body text-sm text-primary-foreground/50 hover:text-gold transition-colors">
               Privacy Policy
             </Link>
             <Link to="/terms" className="font-body text-sm text-primary-foreground/50 hover:text-gold transition-colors">
               Terms of Service
+            </Link>
+            <Link to="/about" className="font-body text-sm text-primary-foreground/50 hover:text-gold transition-colors">
+              About Us
             </Link>
           </div>
         </div>
