@@ -13,24 +13,10 @@ import heroImage from "@/assets/hero-santorini.jpg";
 const team = [
   {
     id: 1,
-    name: "Victoria Hamilton",
+    name: "Haseen Raihan",
     role: "Founder & CEO",
     image: team1Image,
-    bio: "With 25 years in luxury travel, Victoria founded Notting Hill Voyages to share her passion for exceptional journeys.",
-  },
-  {
-    id: 2,
-    name: "Marcus Bennett",
-    role: "Head of Travel Design",
-    image: team2Image,
-    bio: "Marcus brings creativity and expertise to every itinerary, having explored over 80 countries.",
-  },
-  {
-    id: 3,
-    name: "Sophie Chen",
-    role: "Asia Specialist",
-    image: team3Image,
-    bio: "Born in Singapore, Sophie's deep knowledge of Asian cultures creates truly authentic experiences.",
+    bio: "After completing his Bachelor's in Banking and Finance in 2025, Haseen founded Notting Hill Voyages to help people achieve their UK visit visa and travel dreams.",
   },
 ];
 
@@ -43,12 +29,12 @@ const values = [
   {
     icon: Award,
     title: "Excellence",
-    description: "Only the finest accommodations, experiences, and service standards make our cut.",
+    description: "Only the finest service standards and attention to detail make our cut.",
   },
   {
     icon: Globe,
-    title: "Sustainability",
-    description: "We're committed to preserving the destinations we love for future generations.",
+    title: "Global Reach",
+    description: "From UK visas to worldwide travel, we connect you to destinations across the globe.",
   },
   {
     icon: Users,
@@ -58,11 +44,9 @@ const values = [
 ];
 
 const milestones = [
-  { year: "1998", event: "Founded in Notting Hill, London" },
-  { year: "2005", event: "Expanded to serve international clients" },
-  { year: "2012", event: "Named Top UK Luxury Travel Agency" },
-  { year: "2018", event: "Launched sustainable travel initiative" },
-  { year: "2023", event: "Celebrated 25 years of extraordinary journeys" },
+  { year: "2025", event: "Founded by Haseen Raihan in Sylhet, Bangladesh" },
+  { year: "2025", event: "Launched UK Visit Visa consultation services" },
+  { year: "2025", event: "Expanded to Student Visa and Travel Packages" },
 ];
 
 const About = () => {
@@ -89,8 +73,8 @@ const About = () => {
               About <span className="italic font-light">Notting Hill Voyages</span>
             </h1>
             <p className="font-body text-primary-foreground/80 text-lg leading-relaxed">
-              For over 25 years, we've been crafting extraordinary journeys for 
-              discerning travellers who seek more than just a vacation.
+              Founded in 2025, we're dedicated to making travel dreams come true through 
+              expert visa assistance and personalized travel experiences.
             </p>
           </motion.div>
         </div>
@@ -106,24 +90,25 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-6">
-                A Legacy of <span className="italic font-light">Extraordinary Travel</span>
+            <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-6">
+                Our <span className="italic font-light">Story</span>
               </h2>
               <div className="space-y-4 font-body text-muted-foreground leading-relaxed">
                 <p>
-                  Founded in the heart of London's Notting Hill in 1998, our agency 
-                  was born from a simple belief: travel should be transformative.
+                  Notting Hill Voyages was founded in 2025 by Haseen Raihan, right after 
+                  completing his Bachelor's degree in Banking and Finance. What started 
+                  as a passion for helping friends and family navigate the UK visa process 
+                  has grown into a full-service travel consultancy.
                 </p>
                 <p>
-                  What began as a boutique consultancy has grown into one of the UK's 
-                  most respected luxury travel specialists, yet we've never lost our 
-                  personal touch. Every client becomes part of our family.
+                  Based in Sylhet, Bangladesh, we specialize in UK visit visas, student visas, 
+                  and comprehensive travel packages. Our founder's personal experience with 
+                  the visa process gives us unique insight into what applicants need to succeed.
                 </p>
                 <p>
-                  Our team of passionate travel designers has collectively visited 
-                  over 500 destinations worldwide. We don't just book trips—we craft 
-                  stories, create connections, and unlock experiences that most 
-                  travellers never discover.
+                  We believe that everyone deserves the chance to explore the world. Whether 
+                  you're visiting family in the UK, pursuing education abroad, or embarking 
+                  on a pilgrimage, we're here to make your journey smooth and stress-free.
                 </p>
               </div>
             </motion.div>
@@ -139,8 +124,8 @@ const About = () => {
                 <img src={heroImage} alt="Notting Hill Voyages office" className="w-full h-full object-cover" />
               </div>
               <div className="absolute -bottom-6 -left-6 bg-gold text-primary p-6 rounded-xl shadow-gold">
-                <div className="font-heading text-4xl">25+</div>
-                <div className="font-body text-sm">Years of Excellence</div>
+                <div className="font-heading text-4xl">100%</div>
+                <div className="font-body text-sm">Dedication</div>
               </div>
             </motion.div>
           </div>

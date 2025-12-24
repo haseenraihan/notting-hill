@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, MessageCircle } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -23,16 +24,29 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const { error } = await supabase.functions.invoke('send-inquiry', {
+        body: formData
+      });
 
-    toast({
-      title: "Thank you for your enquiry!",
-      description: "Our travel experts will be in touch within 24 hours.",
-    });
+      if (error) throw error;
 
-    setFormData({ name: "", email: "", phone: "", destination: "", message: "" });
-    setIsSubmitting(false);
+      toast({
+        title: "Thank you for your enquiry!",
+        description: "Our travel experts will be in touch within 24 hours.",
+      });
+
+      setFormData({ name: "", email: "", phone: "", destination: "", message: "" });
+    } catch (error) {
+      console.error('Error sending inquiry:', error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact us via WhatsApp.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -159,22 +173,33 @@ const Contact = () => {
                   />
                 </div>
 
-                <Button
-                  type="submit"
-                  variant="gold"
-                  size="lg"
-                  className="w-full sm:w-auto"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    "Sending..."
-                  ) : (
-                    <>
-                      Send Enquiry
-                      <Send className="w-4 h-4 ml-2" />
-                    </>
-                  )}
-                </Button>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button
+                    type="submit"
+                    variant="gold"
+                    size="lg"
+                    className="w-full sm:w-auto"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      "Sending..."
+                    ) : (
+                      <>
+                        Send Enquiry
+                        <Send className="w-4 h-4 ml-2" />
+                      </>
+                    )}
+                  </Button>
+                  <a
+                    href="https://wa.me/447385608114"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors w-full sm:w-auto"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    WhatsApp Us
+                  </a>
+                </div>
               </form>
             </motion.div>
 
@@ -186,7 +211,7 @@ const Contact = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-6">
-                Visit <span className="italic font-light">Our Office</span>
+                Contact <span className="italic font-light">Information</span>
               </h2>
               
               <div className="bg-secondary/50 rounded-xl p-8 mb-8">
@@ -198,9 +223,7 @@ const Contact = () => {
                     <div>
                       <h3 className="font-heading text-lg text-foreground mb-1">Address</h3>
                       <p className="font-body text-muted-foreground">
-                        123 Portobello Road<br />
-                        Notting Hill, London W11 2QB<br />
-                        United Kingdom
+                        Sylhet, Bangladesh
                       </p>
                     </div>
                   </div>
@@ -211,8 +234,20 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-heading text-lg text-foreground mb-1">Phone</h3>
-                      <a href="tel:+44123456789" className="font-body text-muted-foreground hover:text-gold transition-colors">
-                        +44 123 456 789
+                      <a href="tel:+447385608114" className="font-body text-muted-foreground hover:text-gold transition-colors">
+                        +44 7385 608 114
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center flex-shrink-0">
+                      <MessageCircle className="w-5 h-5 text-green-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-heading text-lg text-foreground mb-1">WhatsApp</h3>
+                      <a href="https://wa.me/447385608114" target="_blank" rel="noopener noreferrer" className="font-body text-muted-foreground hover:text-green-600 transition-colors">
+                        Chat with us instantly
                       </a>
                     </div>
                   </div>
@@ -223,8 +258,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-heading text-lg text-foreground mb-1">Email</h3>
-                      <a href="mailto:hello@nhvoyages.com" className="font-body text-muted-foreground hover:text-gold transition-colors">
-                        hello@nhvoyages.com
+                      <a href="mailto:info@nottinghillvoyages.com" className="font-body text-muted-foreground hover:text-gold transition-colors break-all">
+                        info@nottinghillvoyages.com
                       </a>
                     </div>
                   </div>
@@ -234,11 +269,10 @@ const Contact = () => {
                       <Clock className="w-5 h-5 text-gold" />
                     </div>
                     <div>
-                      <h3 className="font-heading text-lg text-foreground mb-1">Office Hours</h3>
+                      <h3 className="font-heading text-lg text-foreground mb-1">Response Time</h3>
                       <p className="font-body text-muted-foreground">
-                        Monday - Friday: 9:00 AM - 6:00 PM<br />
-                        Saturday: 10:00 AM - 4:00 PM<br />
-                        Sunday: By appointment
+                        We respond within 24 hours<br />
+                        WhatsApp: Usually within 1 hour
                       </p>
                     </div>
                   </div>
@@ -248,14 +282,14 @@ const Contact = () => {
               {/* Map Placeholder */}
               <div className="aspect-video rounded-xl overflow-hidden bg-secondary">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.228894785!2d-0.20556!3d51.5173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761ab0d7a7b9b1%3A0x5e8e6c2a8c8b3f0!2sPortobello%20Rd%2C%20London!5e0!3m2!1sen!2suk!4v1600000000000!5m2!1sen!2suk"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116833.83187878493!2d91.82869855!3d24.8949295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375054d3d270329f%3A0xf58ef93431f67382!2sSylhet%2C%20Bangladesh!5e0!3m2!1sen!2sus!4v1600000000000!5m2!1sen!2sus"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Notting Hill Voyages location"
+                  title="Notting Hill Voyages location - Sylhet, Bangladesh"
                   className="grayscale hover:grayscale-0 transition-all duration-500"
                 />
               </div>

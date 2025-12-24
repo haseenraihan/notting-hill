@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Twitter, Mail, Phone, MapPin, ArrowUpRight, Linkedin } from "lucide-react";
+import { Instagram, Facebook, Twitter, Mail, Phone, MapPin, ArrowUpRight, Linkedin, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -27,13 +27,24 @@ const Footer = () => {
           <p className="text-primary-foreground/70 max-w-2xl mx-auto mb-8 text-lg">
             Let us help you make your travel dreams a reality. Contact us today for a free consultation.
           </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-primary font-semibold rounded-xl hover:bg-gold-dark transition-colors group"
-          >
-            Get Free Consultation
-            <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gold text-primary font-semibold rounded-xl hover:bg-gold-dark transition-colors group text-sm sm:text-base"
+            >
+              Get Free Consultation
+              <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </Link>
+            <a
+              href="https://wa.me/447385608114"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors group text-sm sm:text-base"
+            >
+              <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+              WhatsApp Us
+            </a>
+          </div>
         </motion.div>
 
         {/* Main Footer Grid */}
@@ -118,20 +129,25 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-gold mt-0.5 flex-shrink-0" />
                 <span className="font-body text-primary-foreground/70">
-                  Sylhet, Bangladesh<br />
-                  & London, UK
+                  Sylhet, Bangladesh
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-gold flex-shrink-0" />
-                <a href="tel:+447123456789" className="font-body text-primary-foreground/70 hover:text-gold transition-colors">
-                  +44 7123 456 789
+                <a href="tel:+447385608114" className="font-body text-primary-foreground/70 hover:text-gold transition-colors">
+                  +44 7385 608 114
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <MessageCircle className="w-5 h-5 text-gold flex-shrink-0" />
+                <a href="https://wa.me/447385608114" target="_blank" rel="noopener noreferrer" className="font-body text-primary-foreground/70 hover:text-gold transition-colors">
+                  WhatsApp
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-gold flex-shrink-0" />
-                <a href="mailto:info@nhvoyages.com" className="font-body text-primary-foreground/70 hover:text-gold transition-colors">
-                  info@nhvoyages.com
+                <a href="mailto:info@nottinghillvoyages.com" className="font-body text-primary-foreground/70 hover:text-gold transition-colors text-sm">
+                  info@nottinghillvoyages.com
                 </a>
               </li>
             </ul>
