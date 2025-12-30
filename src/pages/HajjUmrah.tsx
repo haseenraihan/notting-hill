@@ -13,12 +13,13 @@ import {
   Phone,
   Calendar,
   MapPin,
-  Clock,
   Heart
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
+
+import moroccoImage from "@/assets/destination-morocco.jpg";
 
 const packages = [
   {
@@ -88,6 +89,7 @@ const hajjPackages = [
     name: "Premium Hajj",
     duration: "25 Days",
     price: "£8,499",
+    popular: true,
     features: ["Private tent in Mina", "5-star Makkah hotel", "4-star Madinah hotel", "VIP transport", "Full board meals"],
   },
   {
@@ -95,6 +97,28 @@ const hajjPackages = [
     duration: "28 Days",
     price: "£12,999",
     features: ["Luxury Aziziya camps", "5-star Haram view hotels", "Private transport", "Gourmet meals", "Personal guide"],
+  },
+];
+
+const ramadanPackages = [
+  {
+    name: "First 10 Days",
+    duration: "12 Days",
+    price: "£2,199",
+    features: ["4-star hotels", "Suhoor & Iftar", "Airport transfers", "Ziyarat included"],
+  },
+  {
+    name: "Last 10 Days",
+    duration: "14 Days",
+    price: "£3,499",
+    popular: true,
+    features: ["5-star hotels", "All meals", "Laylatul Qadr special", "VIP transfers"],
+  },
+  {
+    name: "Full Ramadan",
+    duration: "30 Days",
+    price: "£5,999",
+    features: ["Premium hotels", "Complete meals", "Dedicated guide", "All Ziyarat"],
   },
 ];
 
@@ -127,7 +151,9 @@ const HajjUmrah = () => {
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-primary overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-mesh opacity-30" />
+        <div className="absolute inset-0">
+          <img src={moroccoImage} alt="" className="w-full h-full object-cover opacity-20" />
+        </div>
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="container mx-auto px-4 relative">
           <motion.div
@@ -155,7 +181,7 @@ const HajjUmrah = () => {
                 </Link>
               </Button>
               <Button variant="heroOutline" size="lg" className="text-base" asChild>
-                <a href="tel:+447123456789">
+                <a href="tel:+447385608114">
                   <Phone className="w-5 h-5 mr-2" />
                   Speak to an Advisor
                 </a>
@@ -231,7 +257,7 @@ const HajjUmrah = () => {
                 )}
                 <h3 className="font-heading text-xl mb-2">{pkg.name}</h3>
                 <div className="flex items-center gap-2 text-sm mb-4">
-                  <Calendar className={`w-4 h-4 ${pkg.popular ? "text-gold" : "text-gold"}`} />
+                  <Calendar className={`w-4 h-4 text-gold`} />
                   <span className={pkg.popular ? "text-primary-foreground/80" : "text-muted-foreground"}>
                     {pkg.duration}
                   </span>
@@ -244,11 +270,11 @@ const HajjUmrah = () => {
                 </p>
                 <div className={`p-3 rounded-lg mb-6 ${pkg.popular ? "bg-primary-foreground/10" : "bg-secondary"}`}>
                   <div className="flex items-center gap-2 mb-1">
-                    <Hotel className={`w-4 h-4 ${pkg.popular ? "text-gold" : "text-gold"}`} />
+                    <Hotel className="w-4 h-4 text-gold" />
                     <span className="text-sm font-medium">{pkg.hotel}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <MapPin className={`w-4 h-4 ${pkg.popular ? "text-gold" : "text-gold"}`} />
+                    <MapPin className="w-4 h-4 text-gold" />
                     <span className={`text-xs ${pkg.popular ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
                       {pkg.distance}
                     </span>
@@ -257,18 +283,14 @@ const HajjUmrah = () => {
                 <ul className="space-y-2 mb-8">
                   {pkg.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className={`w-4 h-4 flex-shrink-0 mt-0.5 ${pkg.popular ? "text-gold" : "text-gold"}`} />
+                      <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-gold" />
                       <span className={pkg.popular ? "text-primary-foreground/90" : "text-muted-foreground"}>
                         {feature}
                       </span>
                     </li>
                   ))}
                 </ul>
-                <Button
-                  variant={pkg.popular ? "gold" : "outline"}
-                  className="w-full"
-                  asChild
-                >
+                <Button variant={pkg.popular ? "gold" : "outline"} className="w-full" asChild>
                   <Link to="/contact">Book Now</Link>
                 </Button>
               </motion.div>
@@ -304,8 +326,13 @@ const HajjUmrah = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10"
+                className={`p-6 rounded-xl border ${pkg.popular ? 'bg-primary-foreground/10 border-gold' : 'bg-primary-foreground/5 border-primary-foreground/10'}`}
               >
+                {pkg.popular && (
+                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gold text-primary text-xs font-medium mb-3">
+                    <Star className="w-3 h-3" /> Best Value
+                  </span>
+                )}
                 <h3 className="font-heading text-lg mb-1">{pkg.name}</h3>
                 <div className="text-sm text-primary-foreground/60 mb-3">{pkg.duration}</div>
                 <div className="font-heading text-3xl text-gold mb-4">{pkg.price}</div>
@@ -326,8 +353,62 @@ const HajjUmrah = () => {
         </div>
       </section>
 
-      {/* What's Included */}
+      {/* Ramadan Packages */}
       <section className="py-16 lg:py-24">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <span className="section-label">Ramadan 2025</span>
+            <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-4">
+              Ramadan Umrah <span className="italic font-light">Packages</span>
+            </h2>
+            <p className="font-body text-muted-foreground max-w-2xl mx-auto">
+              Experience the blessed month in the Holy cities. Special packages for the first 10, last 10, or full Ramadan.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {ramadanPackages.map((pkg, index) => (
+              <motion.div
+                key={pkg.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`p-6 rounded-xl ${pkg.popular ? 'bg-gold/10 border-2 border-gold' : 'bg-card border border-border'} shadow-card`}
+              >
+                {pkg.popular && (
+                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gold text-primary text-xs font-medium mb-3">
+                    <Star className="w-3 h-3" /> Most Booked
+                  </span>
+                )}
+                <h3 className="font-heading text-lg text-foreground mb-1">{pkg.name}</h3>
+                <div className="text-sm text-muted-foreground mb-3">{pkg.duration}</div>
+                <div className="font-heading text-3xl text-gold mb-4">{pkg.price}</div>
+                <ul className="space-y-2">
+                  {pkg.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <CheckCircle2 className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <Button variant={pkg.popular ? "gold" : "outline"} className="w-full mt-6" asChild>
+                  <Link to="/contact">Book Now</Link>
+                </Button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What's Included */}
+      <section className="py-16 lg:py-24 bg-secondary/30">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -366,7 +447,7 @@ const HajjUmrah = () => {
       </section>
 
       {/* Ziyarat */}
-      <section className="py-16 lg:py-24 bg-secondary/30">
+      <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -439,7 +520,7 @@ const HajjUmrah = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -448,24 +529,23 @@ const HajjUmrah = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
-              Begin Your <span className="italic font-light">Spiritual Journey</span>
+            <h2 className="font-heading text-3xl md:text-4xl mb-6">
+              Begin Your Sacred <span className="italic font-light">Journey</span>
             </h2>
-            <p className="font-body text-muted-foreground text-lg mb-8">
-              Speak with our Hajj & Umrah specialists today. We'll help you choose the perfect 
-              package and guide you through every step of this blessed journey.
+            <p className="text-primary-foreground/80 text-lg mb-8">
+              Contact us today to discuss your pilgrimage plans. Our experienced team is here 
+              to guide you every step of the way.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button variant="gold" size="lg" asChild>
                 <Link to="/contact">
-                  Book Your Journey
+                  Book Now
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" asChild>
-                <a href="tel:+447123456789">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call Now
+              <Button variant="heroOutline" size="lg" asChild>
+                <a href="https://wa.me/447385608114" target="_blank" rel="noopener noreferrer">
+                  WhatsApp Us
                 </a>
               </Button>
             </div>

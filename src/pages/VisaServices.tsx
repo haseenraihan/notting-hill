@@ -11,11 +11,14 @@ import {
   FileText,
   Users,
   Award,
-  MapPin
+  MapPin,
+  Star
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
+
+import santoriniImage from "@/assets/hero-santorini.jpg";
 
 const regions = [
   {
@@ -34,28 +37,28 @@ const regions = [
   },
   {
     name: "Middle East",
-    countries: ["UAE", "Saudi Arabia", "Qatar", "Oman"],
+    countries: ["UAE", "Saudi Arabia", "Qatar", "Oman", "Bahrain"],
     description: "Tourist, Business, and Transit visas",
     processingTime: "3-7 days",
-    popular: false,
+    popular: true,
   },
   {
     name: "Asia Pacific",
-    countries: ["Australia", "New Zealand", "Singapore", "Japan"],
+    countries: ["Australia", "New Zealand", "Singapore", "Japan", "China"],
     description: "Electronic and stamped visitor visas",
     processingTime: "5-20 days",
     popular: true,
   },
   {
     name: "Africa",
-    countries: ["South Africa", "Kenya", "Egypt", "Morocco"],
+    countries: ["South Africa", "Kenya", "Egypt", "Morocco", "Tanzania"],
     description: "Tourist and business visa services",
     processingTime: "5-15 days",
     popular: false,
   },
   {
     name: "South America",
-    countries: ["Brazil", "Argentina", "Chile", "Peru"],
+    countries: ["Brazil", "Argentina", "Chile", "Peru", "Colombia"],
     description: "Tourist visas and travel documentation",
     processingTime: "7-21 days",
     popular: false,
@@ -108,6 +111,17 @@ const services = [
   "Refusal case handling",
 ];
 
+const popularVisas = [
+  { dest: "Schengen Tourist Visa", price: "From £199", time: "15-20 days" },
+  { dest: "USA B1/B2 Visa", price: "From £349", time: "Interview based" },
+  { dest: "Canada Tourist Visa", price: "From £249", time: "20-30 days" },
+  { dest: "Australia Visitor Visa", price: "From £279", time: "15-25 days" },
+  { dest: "Dubai Tourist Visa", price: "From £99", time: "3-5 days" },
+  { dest: "UK Standard Visitor", price: "From £299", time: "15-20 days" },
+  { dest: "Saudi Arabia Visa", price: "From £149", time: "5-7 days" },
+  { dest: "Turkey e-Visa", price: "From £79", time: "24 hours" },
+];
+
 const stats = [
   { number: "100+", label: "Countries Covered" },
   { number: "25,000+", label: "Visas Processed" },
@@ -122,7 +136,9 @@ const VisaServices = () => {
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-primary overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-mesh opacity-30" />
+        <div className="absolute inset-0">
+          <img src={santoriniImage} alt="" className="w-full h-full object-cover opacity-20" />
+        </div>
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="container mx-auto px-4 relative">
           <motion.div
@@ -150,7 +166,7 @@ const VisaServices = () => {
                 </Link>
               </Button>
               <Button variant="heroOutline" size="lg" className="text-base" asChild>
-                <a href="tel:+447123456789">
+                <a href="tel:+447385608114">
                   <Phone className="w-5 h-5 mr-2" />
                   Quick Enquiry
                 </a>
@@ -208,12 +224,14 @@ const VisaServices = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`feature-card ${region.popular ? 'border-gold/30' : ''}`}
+                className={`p-6 rounded-xl bg-card shadow-card border ${region.popular ? 'border-gold/30' : 'border-border'}`}
               >
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-heading text-xl text-foreground">{region.name}</h3>
                   {region.popular && (
-                    <span className="px-2 py-1 text-xs rounded-full bg-gold/10 text-gold">Popular</span>
+                    <span className="px-2 py-1 text-xs rounded-full bg-gold/10 text-gold flex items-center gap-1">
+                      <Star className="w-3 h-3" /> Popular
+                    </span>
                   )}
                 </div>
                 <p className="font-body text-muted-foreground text-sm mb-4">{region.description}</p>
@@ -273,10 +291,10 @@ const VisaServices = () => {
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Services & Popular Packages */}
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -310,13 +328,7 @@ const VisaServices = () => {
             >
               <h3 className="font-heading text-2xl mb-6">Popular Visa Packages</h3>
               <div className="space-y-4">
-                {[
-                  { dest: "Schengen Tourist Visa", price: "From £199", time: "15-20 days" },
-                  { dest: "USA B1/B2 Visa", price: "From £349", time: "Interview based" },
-                  { dest: "Canada Tourist Visa", price: "From £249", time: "20-30 days" },
-                  { dest: "Australia Visitor Visa", price: "From £279", time: "15-25 days" },
-                  { dest: "Dubai Tourist Visa", price: "From £99", time: "3-5 days" },
-                ].map((pkg, index) => (
+                {popularVisas.map((pkg, index) => (
                   <div key={index} className="flex items-center justify-between py-3 border-b border-primary-foreground/10 last:border-0">
                     <div className="flex items-center gap-3">
                       <MapPin className="w-4 h-4 text-gold" />
@@ -361,9 +373,8 @@ const VisaServices = () => {
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="tel:+447123456789">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call Now
+                <a href="https://wa.me/447385608114" target="_blank" rel="noopener noreferrer">
+                  WhatsApp Us
                 </a>
               </Button>
             </div>

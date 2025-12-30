@@ -5,22 +5,27 @@ import {
   MapPin,
   CheckCircle2, 
   Calendar,
-  Users,
   Star,
-  Clock,
-  Hotel,
-  Camera,
-  Utensils,
   ArrowRight,
   Phone,
   Sun,
-  Snowflake,
+  Mountain,
   Heart,
-  Mountain
+  Palmtree,
+  Building,
+  Compass
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
+
+import africaImage from "@/assets/destination-africa.jpg";
+import maldivesImage from "@/assets/destination-maldives.jpg";
+import japanImage from "@/assets/destination-japan.jpg";
+import italyImage from "@/assets/destination-italy.jpg";
+import moroccoImage from "@/assets/destination-morocco.jpg";
+import patagoniaImage from "@/assets/destination-patagonia.jpg";
+import santoriniImage from "@/assets/hero-santorini.jpg";
 
 const destinations = [
   {
@@ -31,8 +36,7 @@ const destinations = [
     price: "£899",
     priceNote: "per person",
     rating: 4.9,
-    reviews: 156,
-    image: "/placeholder.svg",
+    image: italyImage,
     highlights: ["Hot air balloon ride", "Hagia Sophia", "Blue Mosque", "Grand Bazaar", "Cave hotels"],
     includes: ["Flights", "4-star hotels", "Breakfast", "Transfers", "Tours"],
     category: "Cultural",
@@ -45,8 +49,7 @@ const destinations = [
     price: "£699",
     priceNote: "per person",
     rating: 4.8,
-    reviews: 234,
-    image: "/placeholder.svg",
+    image: santoriniImage,
     highlights: ["Burj Khalifa", "Desert safari", "Dubai Mall", "Palm Jumeirah", "Ferrari World"],
     includes: ["Flights", "4-star hotels", "Breakfast", "Desert safari", "City tour"],
     category: "Luxury",
@@ -60,8 +63,7 @@ const destinations = [
     price: "£1,099",
     priceNote: "per person",
     rating: 4.7,
-    reviews: 189,
-    image: "/placeholder.svg",
+    image: africaImage,
     highlights: ["Pyramids of Giza", "Nile cruise", "Valley of Kings", "Red Sea beach", "Temple of Karnak"],
     includes: ["Flights", "Hotels & cruise", "Full board on cruise", "All transfers", "Entrance fees"],
     category: "Adventure",
@@ -74,8 +76,7 @@ const destinations = [
     price: "£1,499",
     priceNote: "per person",
     rating: 5.0,
-    reviews: 98,
-    image: "/placeholder.svg",
+    image: maldivesImage,
     highlights: ["Water villa", "Snorkeling", "Sunset cruise", "Spa treatments", "Private beaches"],
     includes: ["Flights", "Resort stay", "Half board", "Speedboat transfers", "Water sports"],
     category: "Beach",
@@ -89,8 +90,7 @@ const destinations = [
     price: "£1,299",
     priceNote: "per person",
     rating: 4.9,
-    reviews: 112,
-    image: "/placeholder.svg",
+    image: patagoniaImage,
     highlights: ["Jungfrau peak", "Lake Lucerne cruise", "Swiss chocolate tour", "Mountain railways", "Alpine villages"],
     includes: ["Flights", "3-star hotels", "Swiss Travel Pass", "Breakfast", "Guided tours"],
     category: "Scenic",
@@ -103,8 +103,7 @@ const destinations = [
     price: "£799",
     priceNote: "per person",
     rating: 4.8,
-    reviews: 167,
-    image: "/placeholder.svg",
+    image: moroccoImage,
     highlights: ["Sahara desert camp", "Medina tours", "Berber villages", "Camel trekking", "Traditional riads"],
     includes: ["Flights", "Riad & desert camp", "Breakfast", "Desert experience", "Private transfers"],
     category: "Cultural",
@@ -117,8 +116,7 @@ const destinations = [
     price: "£1,199",
     priceNote: "per person",
     rating: 4.8,
-    reviews: 203,
-    image: "/placeholder.svg",
+    image: japanImage,
     highlights: ["Grand Palace", "Island hopping", "Thai cooking class", "Temple tours", "Beach relaxation"],
     includes: ["Flights", "4-star hotels", "Breakfast", "Island tours", "Cooking class"],
     category: "Beach",
@@ -131,21 +129,74 @@ const destinations = [
     price: "£999",
     priceNote: "per person",
     rating: 4.9,
-    reviews: 178,
-    image: "/placeholder.svg",
+    image: maldivesImage,
     highlights: ["Rice terraces", "Temple visits", "Ubud arts", "Beach clubs", "Spa retreats"],
     includes: ["Flights", "Villa stay", "Breakfast", "Tours", "Spa session"],
     category: "Wellness",
+  },
+  {
+    name: "Greek Island Escape",
+    location: "Santorini & Mykonos",
+    flag: "🇬🇷",
+    duration: "7 Days / 6 Nights",
+    price: "£1,099",
+    priceNote: "per person",
+    rating: 4.9,
+    image: santoriniImage,
+    highlights: ["Sunset in Oia", "Wine tasting", "Beach hopping", "Ferry cruise", "Greek cuisine"],
+    includes: ["Flights", "Boutique hotels", "Breakfast", "Ferry tickets", "Wine tour"],
+    category: "Beach",
+  },
+  {
+    name: "Vietnam Explorer",
+    location: "Hanoi, Ha Long & Hoi An",
+    flag: "🇻🇳",
+    duration: "12 Days / 11 Nights",
+    price: "£1,299",
+    priceNote: "per person",
+    rating: 4.7,
+    image: japanImage,
+    highlights: ["Ha Long Bay cruise", "Hoi An lanterns", "Cu Chi tunnels", "Street food tours", "Rice paddies"],
+    includes: ["Flights", "4-star hotels", "Cruise cabin", "Tours", "Cooking class"],
+    category: "Adventure",
+  },
+  {
+    name: "Safari & Zanzibar",
+    location: "Tanzania & Zanzibar",
+    flag: "🇹🇿",
+    duration: "10 Days / 9 Nights",
+    price: "£2,499",
+    priceNote: "per person",
+    rating: 5.0,
+    image: africaImage,
+    highlights: ["Serengeti safari", "Ngorongoro Crater", "Big Five", "Zanzibar beaches", "Stone Town"],
+    includes: ["Flights", "Safari lodges", "Beach resort", "Game drives", "All meals on safari"],
+    category: "Adventure",
+    popular: true,
+  },
+  {
+    name: "Japan Discovery",
+    location: "Tokyo, Kyoto & Osaka",
+    flag: "🇯🇵",
+    duration: "10 Days / 9 Nights",
+    price: "£1,899",
+    priceNote: "per person",
+    rating: 4.9,
+    image: japanImage,
+    highlights: ["Mt. Fuji views", "Geisha district", "Bullet train", "Tea ceremony", "Anime culture"],
+    includes: ["Flights", "Hotels", "JR Pass", "Tours", "Breakfast"],
+    category: "Cultural",
   },
 ];
 
 const categories = [
   { name: "All", icon: Plane },
-  { name: "Beach", icon: Sun },
-  { name: "Cultural", icon: Camera },
-  { name: "Adventure", icon: Mountain },
+  { name: "Beach", icon: Palmtree },
+  { name: "Cultural", icon: Building },
+  { name: "Adventure", icon: Compass },
   { name: "Luxury", icon: Star },
   { name: "Wellness", icon: Heart },
+  { name: "Scenic", icon: Mountain },
 ];
 
 const whyBook = [
@@ -182,7 +233,9 @@ const TravelPackages = () => {
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-primary overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-mesh opacity-30" />
+        <div className="absolute inset-0">
+          <img src={santoriniImage} alt="" className="w-full h-full object-cover opacity-20" />
+        </div>
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="container mx-auto px-4 relative">
           <motion.div
@@ -210,7 +263,7 @@ const TravelPackages = () => {
                 </Link>
               </Button>
               <Button variant="heroOutline" size="lg" className="text-base" asChild>
-                <a href="tel:+447123456789">
+                <a href="tel:+447385608114">
                   <Phone className="w-5 h-5 mr-2" />
                   Speak to an Expert
                 </a>
@@ -227,7 +280,7 @@ const TravelPackages = () => {
             {categories.map((category) => (
               <button
                 key={category.name}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-background shadow-soft hover:shadow-card transition-all text-sm font-medium text-muted-foreground hover:text-foreground"
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-background shadow-soft hover:shadow-card transition-all text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-gold/10"
               >
                 <category.icon className="w-4 h-4" />
                 {category.name}
@@ -265,7 +318,7 @@ const TravelPackages = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className={`relative rounded-2xl overflow-hidden bg-card shadow-card hover:shadow-lifted transition-all duration-300 ${
+                className={`relative rounded-2xl overflow-hidden bg-card shadow-card hover:shadow-lifted transition-all duration-300 group ${
                   dest.popular ? "ring-2 ring-gold" : "border border-border"
                 }`}
               >
@@ -277,11 +330,16 @@ const TravelPackages = () => {
                   </div>
                 )}
                 
-                <div className="aspect-[4/3] bg-secondary relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-6xl">{dest.flag}</span>
+                <div className="aspect-[4/3] relative overflow-hidden">
+                  <img 
+                    src={dest.image} 
+                    alt={dest.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="text-3xl drop-shadow-lg">{dest.flag}</span>
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/80 to-transparent p-4">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/90 to-transparent p-4">
                     <div className="flex items-center gap-1 text-primary-foreground">
                       <MapPin className="w-4 h-4" />
                       <span className="text-sm">{dest.location}</span>
@@ -385,12 +443,12 @@ const TravelPackages = () => {
             >
               {[
                 { label: "Honeymoons", icon: Heart },
-                { label: "Family Holidays", icon: Users },
+                { label: "Family Holidays", icon: Sun },
                 { label: "Adventure Trips", icon: Mountain },
-                { label: "Beach Getaways", icon: Sun },
-                { label: "City Breaks", icon: Camera },
-                { label: "Ski Holidays", icon: Snowflake },
-              ].map((item, index) => (
+                { label: "Beach Getaways", icon: Palmtree },
+                { label: "City Breaks", icon: Building },
+                { label: "Luxury Escapes", icon: Star },
+              ].map((item) => (
                 <div
                   key={item.label}
                   className="p-6 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 text-center hover:bg-primary-foreground/10 transition-colors cursor-pointer"
@@ -439,60 +497,8 @@ const TravelPackages = () => {
         </div>
       </section>
 
-      {/* Group Tours */}
-      <section className="py-16 lg:py-24 bg-secondary/30">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <span className="section-label">Group Tours 2025</span>
-            <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-4">
-              Upcoming <span className="italic font-light">Departures</span>
-            </h2>
-          </motion.div>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-background rounded-2xl shadow-card overflow-hidden">
-              {[
-                { date: "Feb 15-22, 2025", dest: "Dubai & Abu Dhabi", spots: "8 spots left", price: "£699" },
-                { date: "Mar 5-12, 2025", dest: "Morocco Discovery", spots: "12 spots left", price: "£799" },
-                { date: "Apr 10-19, 2025", dest: "Thailand Explorer", spots: "6 spots left", price: "£1,199" },
-                { date: "May 1-8, 2025", dest: "Greek Islands", spots: "10 spots left", price: "£899" },
-                { date: "Jun 15-24, 2025", dest: "Egypt & Nile", spots: "15 spots left", price: "£1,099" },
-              ].map((tour, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col md:flex-row md:items-center justify-between p-6 border-b border-border last:border-0 hover:bg-secondary/50 transition-colors"
-                >
-                  <div className="flex items-center gap-4 mb-4 md:mb-0">
-                    <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center">
-                      <Calendar className="w-6 h-6 text-gold" />
-                    </div>
-                    <div>
-                      <div className="font-heading text-lg text-foreground">{tour.dest}</div>
-                      <div className="text-sm text-muted-foreground">{tour.date}</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-6">
-                    <div className="text-sm text-gold">{tour.spots}</div>
-                    <div className="font-heading text-xl text-foreground">{tour.price}</div>
-                    <Button variant="outline" size="sm" asChild>
-                      <Link to="/contact">Book</Link>
-                    </Button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 bg-secondary/30">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -502,11 +508,10 @@ const TravelPackages = () => {
             className="max-w-3xl mx-auto"
           >
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
-              Your Next Adventure <span className="italic font-light">Awaits</span>
+              Ready for Your <span className="italic font-light">Dream Holiday?</span>
             </h2>
             <p className="font-body text-muted-foreground text-lg mb-8">
-              Ready to explore the world? Contact us today for expert advice and the best deals 
-              on your dream destination.
+              Let us plan your perfect getaway. Contact us today for a free consultation.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button variant="gold" size="lg" asChild>
@@ -516,9 +521,8 @@ const TravelPackages = () => {
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="tel:+447123456789">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call Now
+                <a href="https://wa.me/447385608114" target="_blank" rel="noopener noreferrer">
+                  WhatsApp Us
                 </a>
               </Button>
             </div>
