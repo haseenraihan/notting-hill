@@ -99,9 +99,69 @@ const destinations = [
     category: "Beach & Relaxation",
     price: "From £5,800",
   },
+  {
+    id: 8,
+    name: "Turkish Delights",
+    location: "Istanbul & Cappadocia",
+    image: italyImage,
+    description: "Where East meets West – explore ancient bazaars, Ottoman palaces, and fairy chimneys.",
+    duration: "8-12 days",
+    bestTime: "April - June, Sept - Nov",
+    rating: 4.8,
+    category: "Cultural",
+    price: "From £3,800",
+  },
+  {
+    id: 9,
+    name: "Bali Serenity",
+    location: "Indonesia",
+    image: maldivesImage,
+    description: "Spiritual temples, terraced rice paddies, and world-class wellness retreats.",
+    duration: "10-14 days",
+    bestTime: "April - October",
+    rating: 4.7,
+    category: "Beach & Relaxation",
+    price: "From £4,500",
+  },
+  {
+    id: 10,
+    name: "Dubai & Abu Dhabi",
+    location: "United Arab Emirates",
+    image: heroImage,
+    description: "Futuristic architecture, luxury shopping, and desert adventures in the Arabian Gulf.",
+    duration: "5-7 days",
+    bestTime: "November - March",
+    rating: 4.6,
+    category: "Luxury",
+    price: "From £3,200",
+  },
+  {
+    id: 11,
+    name: "Swiss Alps Experience",
+    location: "Switzerland",
+    image: patagoniaImage,
+    description: "Majestic mountain peaks, pristine lakes, and charming alpine villages.",
+    duration: "7-10 days",
+    bestTime: "June - September, Dec - Feb",
+    rating: 4.9,
+    category: "Adventure",
+    price: "From £6,500",
+  },
+  {
+    id: 12,
+    name: "Vietnam Discovery",
+    location: "Hanoi to Ho Chi Minh",
+    image: japanImage,
+    description: "Ancient temples, floating markets, and stunning Ha Long Bay landscapes.",
+    duration: "12-16 days",
+    bestTime: "February - April, Sept - Nov",
+    rating: 4.7,
+    category: "Cultural",
+    price: "From £4,800",
+  },
 ];
 
-const categories = ["All", "Adventure", "Beach & Relaxation", "Cultural", "Coastal"];
+const categories = ["All", "Adventure", "Beach & Relaxation", "Cultural", "Coastal", "Luxury"];
 
 const Destinations = () => {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -116,9 +176,10 @@ const Destinations = () => {
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-primary">
-        <div className="absolute inset-0 opacity-20">
-          <img src={heroImage} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0">
+          <img src={heroImage} alt="" className="w-full h-full object-cover opacity-20" />
         </div>
+        <div className="absolute inset-0 bg-gradient-hero" />
         <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -165,15 +226,15 @@ const Destinations = () => {
       {/* Destinations Grid */}
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredDestinations.map((destination, index) => (
               <motion.article
                 key={destination.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group bg-card rounded-xl overflow-hidden shadow-elegant hover:shadow-lifted transition-shadow duration-300"
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="group bg-card rounded-xl overflow-hidden shadow-elegant hover:shadow-lifted transition-shadow duration-300 border border-border"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
@@ -192,13 +253,13 @@ const Destinations = () => {
                   </div>
                 </div>
 
-                <div className="p-6">
+                <div className="p-5">
                   <div className="flex items-center gap-2 text-muted-foreground mb-2">
                     <MapPin className="w-4 h-4" />
                     <span className="font-body text-sm">{destination.location}</span>
                   </div>
 
-                  <h2 className="font-heading text-xl text-foreground mb-3 group-hover:text-gold transition-colors">
+                  <h2 className="font-heading text-lg text-foreground mb-2 group-hover:text-gold transition-colors">
                     {destination.name}
                   </h2>
 
@@ -237,9 +298,16 @@ const Destinations = () => {
           <p className="font-body text-muted-foreground mb-8 max-w-2xl mx-auto">
             Let our travel experts create a bespoke itinerary tailored to your desires.
           </p>
-          <Button variant="gold" size="lg" asChild>
-            <Link to="/contact">Speak to an Expert</Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button variant="gold" size="lg" asChild>
+              <Link to="/contact">Speak to an Expert</Link>
+            </Button>
+            <Button variant="outline" size="lg" asChild>
+              <a href="https://wa.me/447385608114" target="_blank" rel="noopener noreferrer">
+                WhatsApp Us
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
 

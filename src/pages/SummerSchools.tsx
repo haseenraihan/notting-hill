@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { 
   GraduationCap, 
-  MapPin,
   CheckCircle2, 
   Calendar,
   Users,
@@ -15,11 +14,19 @@ import {
   Clock,
   Building2,
   Utensils,
-  Bus
+  Bus,
+  MapPin
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
+
+import santoriniImage from "@/assets/hero-santorini.jpg";
+import italyImage from "@/assets/destination-italy.jpg";
+import patagoniaImage from "@/assets/destination-patagonia.jpg";
+import maldivesImage from "@/assets/destination-maldives.jpg";
+import japanImage from "@/assets/destination-japan.jpg";
+import africaImage from "@/assets/destination-africa.jpg";
 
 const programs = [
   {
@@ -29,7 +36,7 @@ const programs = [
     ages: "8-17 years",
     duration: "2-6 weeks",
     price: "From £1,899/week",
-    image: "/placeholder.svg",
+    image: italyImage,
     highlights: [
       "Central London campus",
       "20 hours English/week",
@@ -48,7 +55,7 @@ const programs = [
     ages: "10-17 years",
     duration: "2-4 weeks",
     price: "From £1,699/week",
-    image: "/placeholder.svg",
+    image: patagoniaImage,
     highlights: [
       "Historic university campus",
       "15-20 hours English/week",
@@ -67,7 +74,7 @@ const programs = [
     ages: "14-18 years",
     duration: "3-6 weeks",
     price: "From $3,499/week",
-    image: "/placeholder.svg",
+    image: japanImage,
     highlights: [
       "Harvard campus experience",
       "Academic ESL courses",
@@ -86,7 +93,7 @@ const programs = [
     ages: "12-18 years",
     duration: "2-4 weeks",
     price: "From $2,999/week",
-    image: "/placeholder.svg",
+    image: maldivesImage,
     highlights: [
       "UCLA campus",
       "American English focus",
@@ -105,7 +112,7 @@ const programs = [
     ages: "13-17 years",
     duration: "2-4 weeks",
     price: "From £2,199/week",
-    image: "/placeholder.svg",
+    image: santoriniImage,
     highlights: [
       "Historic college setting",
       "Academic English",
@@ -124,7 +131,7 @@ const programs = [
     ages: "14-18 years",
     duration: "2-6 weeks",
     price: "From $2,799/week",
-    image: "/placeholder.svg",
+    image: africaImage,
     highlights: [
       "Manhattan location",
       "Intensive English",
@@ -134,6 +141,44 @@ const programs = [
       "Central Park activities",
     ],
     accommodation: "Student residence",
+    popular: false,
+  },
+  {
+    location: "Oxford, UK",
+    flag: "🇬🇧",
+    school: "St. Clare's Oxford",
+    ages: "15-17 years",
+    duration: "2-4 weeks",
+    price: "From £2,399/week",
+    image: italyImage,
+    highlights: [
+      "University city experience",
+      "IB preparation courses",
+      "English + subject focus",
+      "College tours",
+      "Cultural excursions",
+      "Academic enrichment",
+    ],
+    accommodation: "Residential college",
+    popular: true,
+  },
+  {
+    location: "San Francisco, USA",
+    flag: "🇺🇸",
+    school: "Berkeley Summer Programs",
+    ages: "14-18 years",
+    duration: "3-6 weeks",
+    price: "From $3,299/week",
+    image: patagoniaImage,
+    highlights: [
+      "UC Berkeley campus",
+      "STEM programs",
+      "Tech company visits",
+      "Golden Gate tours",
+      "Silicon Valley trips",
+      "College prep",
+    ],
+    accommodation: "University dorms",
     popular: false,
   },
 ];
@@ -188,7 +233,9 @@ const SummerSchools = () => {
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-primary overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-mesh opacity-30" />
+        <div className="absolute inset-0">
+          <img src={santoriniImage} alt="" className="w-full h-full object-cover opacity-20" />
+        </div>
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="container mx-auto px-4 relative">
           <motion.div
@@ -216,7 +263,7 @@ const SummerSchools = () => {
                 </Link>
               </Button>
               <Button variant="heroOutline" size="lg" className="text-base" asChild>
-                <a href="tel:+447123456789">
+                <a href="tel:+447385608114">
                   <Phone className="w-5 h-5 mr-2" />
                   Free Consultation
                 </a>
@@ -267,7 +314,7 @@ const SummerSchools = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {programs.map((program, index) => (
               <motion.div
                 key={program.location}
@@ -275,7 +322,7 @@ const SummerSchools = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative rounded-2xl overflow-hidden bg-card shadow-card ${
+                className={`relative rounded-2xl overflow-hidden bg-card shadow-card group ${
                   program.popular ? "ring-2 ring-gold" : "border border-border"
                 }`}
               >
@@ -286,14 +333,26 @@ const SummerSchools = () => {
                     </span>
                   </div>
                 )}
-                <div className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-3xl">{program.flag}</span>
-                    <div>
-                      <h3 className="font-heading text-lg text-foreground">{program.location}</h3>
-                      <p className="text-sm text-muted-foreground">{program.school}</p>
+                
+                <div className="aspect-[4/3] relative overflow-hidden">
+                  <img 
+                    src={program.image} 
+                    alt={program.location}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="text-3xl drop-shadow-lg">{program.flag}</span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/90 to-transparent p-4">
+                    <div className="flex items-center gap-1 text-primary-foreground">
+                      <MapPin className="w-4 h-4" />
+                      <span className="text-sm font-medium">{program.location}</span>
                     </div>
                   </div>
+                </div>
+
+                <div className="p-5">
+                  <p className="text-sm text-muted-foreground mb-3">{program.school}</p>
                   
                   <div className="grid grid-cols-2 gap-3 mb-4">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -306,10 +365,10 @@ const SummerSchools = () => {
                     </div>
                   </div>
 
-                  <div className="font-heading text-2xl text-gold mb-4">{program.price}</div>
+                  <div className="font-heading text-xl text-gold mb-4">{program.price}</div>
 
                   <div className="space-y-2 mb-4">
-                    {program.highlights.slice(0, 4).map((highlight) => (
+                    {program.highlights.slice(0, 3).map((highlight) => (
                       <div key={highlight} className="flex items-center gap-2 text-sm text-muted-foreground">
                         <CheckCircle2 className="w-4 h-4 text-gold flex-shrink-0" />
                         {highlight}
@@ -320,7 +379,7 @@ const SummerSchools = () => {
                   <div className="p-3 rounded-lg bg-secondary mb-4">
                     <div className="flex items-center gap-2 text-sm">
                       <Building2 className="w-4 h-4 text-gold" />
-                      <span className="text-muted-foreground">{program.accommodation}</span>
+                      <span className="text-muted-foreground text-xs">{program.accommodation}</span>
                     </div>
                   </div>
 
@@ -445,50 +504,8 @@ const SummerSchools = () => {
         </div>
       </section>
 
-      {/* Process */}
-      <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <span className="text-gold text-sm tracking-[0.25em] uppercase mb-4 block">Simple Process</span>
-            <h2 className="font-heading text-3xl md:text-4xl">
-              How It <span className="italic font-light">Works</span>
-            </h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {[
-              { step: "1", title: "Consultation", desc: "Discuss your child's needs and preferences" },
-              { step: "2", title: "Program Selection", desc: "We recommend the best-fit programs" },
-              { step: "3", title: "Booking & Visa", desc: "We handle all paperwork and logistics" },
-              { step: "4", title: "Travel & Learn", desc: "Your child enjoys an amazing summer" },
-            ].map((item, index) => (
-              <motion.div
-                key={item.step}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="w-16 h-16 rounded-full bg-gold text-primary font-heading text-2xl flex items-center justify-center mx-auto mb-4">
-                  {item.step}
-                </div>
-                <h3 className="font-heading text-lg mb-2">{item.title}</h3>
-                <p className="text-sm text-primary-foreground/70">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -497,24 +514,23 @@ const SummerSchools = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
-              Give Your Child an <span className="italic font-light">Unforgettable Summer</span>
+            <h2 className="font-heading text-3xl md:text-4xl mb-6">
+              Invest in Your Child's <span className="italic font-light">Future</span>
             </h2>
-            <p className="font-body text-muted-foreground text-lg mb-8">
-              Limited spaces available for Summer 2025. Book early to secure your preferred 
-              dates and programs.
+            <p className="text-primary-foreground/80 text-lg mb-8">
+              Book a free consultation to discuss the best summer program for your child. 
+              Early bookings receive priority placement and special discounts.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button variant="gold" size="lg" asChild>
                 <Link to="/contact">
-                  Book Now
+                  Book Free Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" asChild>
-                <a href="tel:+447123456789">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call Now
+              <Button variant="heroOutline" size="lg" asChild>
+                <a href="https://wa.me/447385608114" target="_blank" rel="noopener noreferrer">
+                  WhatsApp Us
                 </a>
               </Button>
             </div>

@@ -7,7 +7,6 @@ import {
   BookOpen, 
   Building2,
   Briefcase,
-  Clock,
   Shield,
   ArrowRight,
   Phone,
@@ -18,6 +17,8 @@ import {
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
+
+import japanImage from "@/assets/destination-japan.jpg";
 
 const countries = [
   {
@@ -61,6 +62,20 @@ const countries = [
     universities: "30+ Partner Universities",
     highlight: "Work visa post-study",
     description: "Safe, welcoming environment for students",
+  },
+  {
+    name: "Germany",
+    flag: "🇩🇪",
+    universities: "50+ Partner Universities",
+    highlight: "Low/No tuition fees",
+    description: "World-class engineering and technology programs",
+  },
+  {
+    name: "Netherlands",
+    flag: "🇳🇱",
+    universities: "25+ Partner Universities",
+    highlight: "Orientation year visa",
+    description: "English-taught programs in innovative environment",
   },
 ];
 
@@ -113,6 +128,21 @@ const stats = [
   { number: "95%", label: "Visa Success Rate" },
 ];
 
+const popularPrograms = [
+  "Business & Management",
+  "Engineering & Technology",
+  "Medicine & Healthcare",
+  "Computer Science & IT",
+  "Law & Legal Studies",
+  "Arts & Design",
+  "Hospitality & Tourism",
+  "Science & Research",
+  "Psychology & Social Sciences",
+  "Finance & Accounting",
+  "Architecture",
+  "Media & Communications",
+];
+
 const StudentVisa = () => {
   return (
     <main className="min-h-screen bg-background">
@@ -120,7 +150,9 @@ const StudentVisa = () => {
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-primary overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-mesh opacity-30" />
+        <div className="absolute inset-0">
+          <img src={japanImage} alt="" className="w-full h-full object-cover opacity-20" />
+        </div>
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="container mx-auto px-4 relative">
           <motion.div
@@ -148,7 +180,7 @@ const StudentVisa = () => {
                 </Link>
               </Button>
               <Button variant="heroOutline" size="lg" className="text-base" asChild>
-                <a href="tel:+447123456789">
+                <a href="tel:+447385608114">
                   <Phone className="w-5 h-5 mr-2" />
                   Speak to an Expert
                 </a>
@@ -198,26 +230,26 @@ const StudentVisa = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {countries.map((country, index) => (
               <motion.div
                 key={country.name}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="feature-card group"
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="p-6 rounded-xl bg-card shadow-card border border-border hover:border-gold/30 transition-colors group"
               >
                 <div className="flex items-center gap-4 mb-4">
                   <span className="text-4xl">{country.flag}</span>
                   <div>
-                    <h3 className="font-heading text-xl text-foreground">{country.name}</h3>
-                    <p className="text-sm text-gold">{country.universities}</p>
+                    <h3 className="font-heading text-lg text-foreground group-hover:text-gold transition-colors">{country.name}</h3>
+                    <p className="text-xs text-gold">{country.universities}</p>
                   </div>
                 </div>
                 <p className="font-body text-muted-foreground text-sm mb-4">{country.description}</p>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/10 text-gold text-sm">
-                  <Award className="w-4 h-4" />
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/10 text-gold text-xs">
+                  <Award className="w-3 h-3" />
                   {country.highlight}
                 </div>
               </motion.div>
@@ -279,7 +311,7 @@ const StudentVisa = () => {
             </h2>
           </motion.div>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {process.map((item, index) => (
                 <motion.div
@@ -320,24 +352,15 @@ const StudentVisa = () => {
             </h2>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {[
-              "Business & Management",
-              "Engineering & Technology",
-              "Medicine & Healthcare",
-              "Computer Science & IT",
-              "Law & Legal Studies",
-              "Arts & Design",
-              "Hospitality & Tourism",
-              "Science & Research",
-            ].map((program, index) => (
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            {popularPrograms.map((program, index) => (
               <motion.div
                 key={program}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 text-center"
+                className="p-4 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 text-center hover:bg-primary-foreground/10 transition-colors"
               >
                 <span className="font-body text-sm text-primary-foreground/90">{program}</span>
               </motion.div>
@@ -371,9 +394,8 @@ const StudentVisa = () => {
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="tel:+447123456789">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call Now
+                <a href="https://wa.me/447385608114" target="_blank" rel="noopener noreferrer">
+                  WhatsApp Us
                 </a>
               </Button>
             </div>
