@@ -21,12 +21,14 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 
-import santoriniImage from "@/assets/hero-santorini.jpg";
-import italyImage from "@/assets/destination-italy.jpg";
-import patagoniaImage from "@/assets/destination-patagonia.jpg";
-import maldivesImage from "@/assets/destination-maldives.jpg";
-import japanImage from "@/assets/destination-japan.jpg";
-import africaImage from "@/assets/destination-africa.jpg";
+import summerSchoolUK from "@/assets/summer-school-uk.jpg";
+import summerSchoolUSA from "@/assets/summer-school-usa.jpg";
+import summerSchoolOxford from "@/assets/summer-school-oxford.jpg";
+import summerSchoolCalifornia from "@/assets/summer-school-california.jpg";
+import summerSchoolEdinburgh from "@/assets/summer-school-edinburgh.jpg";
+import summerSchoolNYC from "@/assets/summer-school-nyc.jpg";
+import summerSchoolSanFrancisco from "@/assets/summer-school-sanfrancisco.jpg";
+import summerSchoolCambridge from "@/assets/summer-school-cambridge.jpg";
 
 const programs = [
   {
@@ -36,7 +38,7 @@ const programs = [
     ages: "8-17 years",
     duration: "2-6 weeks",
     price: "From £1,899/week",
-    image: italyImage,
+    image: summerSchoolUK,
     highlights: [
       "Central London campus",
       "20 hours English/week",
@@ -55,7 +57,7 @@ const programs = [
     ages: "10-17 years",
     duration: "2-4 weeks",
     price: "From £1,699/week",
-    image: patagoniaImage,
+    image: summerSchoolEdinburgh,
     highlights: [
       "Historic university campus",
       "15-20 hours English/week",
@@ -74,7 +76,7 @@ const programs = [
     ages: "14-18 years",
     duration: "3-6 weeks",
     price: "From $3,499/week",
-    image: japanImage,
+    image: summerSchoolUSA,
     highlights: [
       "Harvard campus experience",
       "Academic ESL courses",
@@ -93,7 +95,7 @@ const programs = [
     ages: "12-18 years",
     duration: "2-4 weeks",
     price: "From $2,999/week",
-    image: maldivesImage,
+    image: summerSchoolCalifornia,
     highlights: [
       "UCLA campus",
       "American English focus",
@@ -112,7 +114,7 @@ const programs = [
     ages: "13-17 years",
     duration: "2-4 weeks",
     price: "From £2,199/week",
-    image: santoriniImage,
+    image: summerSchoolCambridge,
     highlights: [
       "Historic college setting",
       "Academic English",
@@ -131,7 +133,7 @@ const programs = [
     ages: "14-18 years",
     duration: "2-6 weeks",
     price: "From $2,799/week",
-    image: africaImage,
+    image: summerSchoolNYC,
     highlights: [
       "Manhattan location",
       "Intensive English",
@@ -150,7 +152,7 @@ const programs = [
     ages: "15-17 years",
     duration: "2-4 weeks",
     price: "From £2,399/week",
-    image: italyImage,
+    image: summerSchoolOxford,
     highlights: [
       "University city experience",
       "IB preparation courses",
@@ -169,7 +171,7 @@ const programs = [
     ages: "14-18 years",
     duration: "3-6 weeks",
     price: "From $3,299/week",
-    image: patagoniaImage,
+    image: summerSchoolSanFrancisco,
     highlights: [
       "UC Berkeley campus",
       "STEM programs",
@@ -234,7 +236,7 @@ const SummerSchools = () => {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-primary overflow-hidden">
         <div className="absolute inset-0">
-          <img src={santoriniImage} alt="" className="w-full h-full object-cover opacity-20" />
+          <img src={summerSchoolUK} alt="" className="w-full h-full object-cover opacity-20" />
         </div>
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="container mx-auto px-4 relative">
