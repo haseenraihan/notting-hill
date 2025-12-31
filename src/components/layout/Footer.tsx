@@ -28,13 +28,13 @@ const Footer = () => {
             Let us help you make your travel dreams a reality. Contact us today for a free consultation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gold text-primary font-semibold rounded-xl hover:bg-gold-dark transition-colors group text-sm sm:text-base"
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gold text-primary font-semibold rounded-xl hover:bg-gold-dark transition-colors group text-sm sm:text-base cursor-pointer"
             >
-              Get Free Consultation
+              Get in Touch
               <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </Link>
+            </button>
             <a
               href="https://wa.me/447385608114"
               target="_blank"
