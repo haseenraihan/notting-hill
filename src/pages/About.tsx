@@ -5,9 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 
-import team1Image from "@/assets/team-1.jpg";
-import team2Image from "@/assets/team-2.jpg";
-import team3Image from "@/assets/team-3.jpg";
+import haseenImage from "@/assets/haseen-raihan.jpg";
 import heroImage from "@/assets/hero-santorini.jpg";
 
 const team = [
@@ -15,7 +13,7 @@ const team = [
     id: 1,
     name: "Haseen Raihan",
     role: "Founder & CEO",
-    image: team1Image,
+    image: haseenImage,
     bio: "After completing his Bachelor's in Banking and Finance in 2025, Haseen founded Notting Hill Voyages to help people achieve their UK visit visa and travel dreams.",
   },
 ];

@@ -13,6 +13,13 @@ import italyImage from "@/assets/destination-italy.jpg";
 import patagoniaImage from "@/assets/destination-patagonia.jpg";
 import moroccoImage from "@/assets/destination-morocco.jpg";
 import heroImage from "@/assets/hero-santorini.jpg";
+import tokyoImage from "@/assets/destination-tokyo.jpg";
+import turkeyImage from "@/assets/destination-turkey.jpg";
+import baliImage from "@/assets/destination-bali.jpg";
+import dubaiImage from "@/assets/destination-dubai.jpg";
+import switzerlandImage from "@/assets/destination-switzerland.jpg";
+import vietnamImage from "@/assets/destination-vietnam.jpg";
+import santoriniImage from "@/assets/destination-santorini.jpg";
 
 const destinations = [
   {
@@ -43,7 +50,7 @@ const destinations = [
     id: 3,
     name: "Cultural Japan",
     location: "Tokyo, Kyoto & Beyond",
-    image: japanImage,
+    image: tokyoImage,
     description: "Experience the perfect harmony of ancient traditions and cutting-edge modernity.",
     duration: "12-16 days",
     bestTime: "March - May, Sept - Nov",
@@ -91,7 +98,7 @@ const destinations = [
     id: 7,
     name: "Greek Island Hopping",
     location: "Santorini & Cyclades",
-    image: heroImage,
+    image: santoriniImage,
     description: "Iconic whitewashed villages, azure waters, and legendary Greek hospitality.",
     duration: "10-14 days",
     bestTime: "May - October",
@@ -103,7 +110,7 @@ const destinations = [
     id: 8,
     name: "Turkish Delights",
     location: "Istanbul & Cappadocia",
-    image: italyImage,
+    image: turkeyImage,
     description: "Where East meets West – explore ancient bazaars, Ottoman palaces, and fairy chimneys.",
     duration: "8-12 days",
     bestTime: "April - June, Sept - Nov",
@@ -115,7 +122,7 @@ const destinations = [
     id: 9,
     name: "Bali Serenity",
     location: "Indonesia",
-    image: maldivesImage,
+    image: baliImage,
     description: "Spiritual temples, terraced rice paddies, and world-class wellness retreats.",
     duration: "10-14 days",
     bestTime: "April - October",
@@ -127,7 +134,7 @@ const destinations = [
     id: 10,
     name: "Dubai & Abu Dhabi",
     location: "United Arab Emirates",
-    image: heroImage,
+    image: dubaiImage,
     description: "Futuristic architecture, luxury shopping, and desert adventures in the Arabian Gulf.",
     duration: "5-7 days",
     bestTime: "November - March",
@@ -139,7 +146,7 @@ const destinations = [
     id: 11,
     name: "Swiss Alps Experience",
     location: "Switzerland",
-    image: patagoniaImage,
+    image: switzerlandImage,
     description: "Majestic mountain peaks, pristine lakes, and charming alpine villages.",
     duration: "7-10 days",
     bestTime: "June - September, Dec - Feb",
@@ -151,7 +158,7 @@ const destinations = [
     id: 12,
     name: "Vietnam Discovery",
     location: "Hanoi to Ho Chi Minh",
-    image: japanImage,
+    image: vietnamImage,
     description: "Ancient temples, floating markets, and stunning Ha Long Bay landscapes.",
     duration: "12-16 days",
     bestTime: "February - April, Sept - Nov",

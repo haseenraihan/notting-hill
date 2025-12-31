@@ -19,7 +19,8 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 
-import moroccoImage from "@/assets/destination-morocco.jpg";
+import makkahImage from "@/assets/destination-makkah.jpg";
+import medinaImage from "@/assets/destination-medina.jpg";
 
 const packages = [
   {
@@ -152,7 +153,7 @@ const HajjUmrah = () => {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-primary overflow-hidden">
         <div className="absolute inset-0">
-          <img src={moroccoImage} alt="" className="w-full h-full object-cover opacity-20" />
+          <img src={makkahImage} alt="Makkah" className="w-full h-full object-cover opacity-30" />
         </div>
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="container mx-auto px-4 relative">
