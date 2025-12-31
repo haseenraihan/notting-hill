@@ -94,10 +94,10 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row gap-4 mb-16"
           >
             <Button variant="gold" size="xl" asChild className="group">
-              <Link to="/contact">
-                Free Consultation
+              <a href="https://calendly.com/nottinghillvoyages" target="_blank" rel="noopener noreferrer">
+                Book a Consultation
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </a>
             </Button>
             <Button variant="heroOutline" size="xl" asChild>
               <Link to="/uk-visa">Explore UK Visa Services</Link>
