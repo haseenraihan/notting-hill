@@ -185,14 +185,14 @@ const Navbar = () => {
 
             {/* CTA Button */}
             <div className="hidden lg:flex items-center gap-4">
-              <a href="tel:+447123456789" className={`flex items-center gap-2 text-sm transition-colors duration-300 ${
+              <a href="tel:+447385608114" className={`flex items-center gap-2 text-sm transition-colors duration-300 ${
                 isScrolled ? "text-muted-foreground hover:text-foreground" : "text-primary-foreground/80 hover:text-primary-foreground"
               }`}>
                 <Phone className="w-4 h-4" />
-                <span className="font-medium">+44 7123 456 789</span>
+                <span className="font-medium">+44 7385 608 114</span>
               </a>
               <Button variant={isScrolled ? "gold" : "white"} size="default" asChild>
-                <Link to="/contact">Free Consultation</Link>
+                <a href="https://calendly.com/nottinghillvoyages" target="_blank" rel="noopener noreferrer">Book a Consultation</a>
               </Button>
             </div>
 
@@ -312,12 +312,12 @@ const Navbar = () => {
                   transition={{ delay: 0.5 }}
                   className="pt-6 space-y-4"
                 >
-                  <a href="tel:+447123456789" className="flex items-center gap-3 text-muted-foreground">
+                  <a href="tel:+447385608114" className="flex items-center gap-3 text-muted-foreground">
                     <Phone className="w-5 h-5" />
-                    <span>+44 7123 456 789</span>
+                    <span>+44 7385 608 114</span>
                   </a>
                   <Button variant="gold" size="lg" className="w-full" asChild>
-                    <Link to="/contact">Free Consultation</Link>
+                    <a href="https://calendly.com/nottinghillvoyages" target="_blank" rel="noopener noreferrer">Book a Consultation</a>
                   </Button>
                 </motion.div>
               </div>
