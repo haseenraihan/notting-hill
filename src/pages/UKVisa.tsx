@@ -107,9 +107,9 @@ const documentChecklist = [
 
 const stats = [
   { number: "98%", label: "Approval Rate" },
-  { number: "5,000+", label: "Visas Processed" },
+  { number: "1,000+", label: "Visas Processed" },
   { number: "24-48hrs", label: "Document Review" },
-  { number: "15+", label: "Years Experience" },
+  { number: "10+", label: "Years Experience" },
 ];
 
 const UKVisa = () => {
@@ -136,7 +136,7 @@ const UKVisa = () => {
               UK Visit Visa <span className="italic font-light text-gold">Made Simple</span>
             </h1>
             <p className="font-body text-primary-foreground/80 text-lg md:text-xl leading-relaxed mb-8 max-w-2xl">
-              With our 98% approval rate and 15+ years of expertise, we handle everything 
+              With our 98% approval rate and 10+ years of expertise, we handle everything 
               from documentation to submission, ensuring your UK visa journey is seamless.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -147,9 +147,9 @@ const UKVisa = () => {
                 </Link>
               </Button>
               <Button variant="heroOutline" size="lg" className="text-base" asChild>
-                <a href="tel:+447123456789">
+                <a href="tel:+447385608114">
                   <Phone className="w-5 h-5 mr-2" />
-                  Free Consultation
+                  Speak to an Advisor
                 </a>
               </Button>
             </div>
@@ -317,7 +317,7 @@ const UKVisa = () => {
             {[
               {
                 name: "Essential",
-                price: "£149",
+                price: "£600",
                 description: "Perfect for straightforward applications",
                 features: [
                   "Document checklist & review",
@@ -328,7 +328,7 @@ const UKVisa = () => {
               },
               {
                 name: "Premium",
-                price: "£299",
+                price: "£1,000",
                 description: "Most popular for family visits",
                 popular: true,
                 features: [
@@ -342,7 +342,7 @@ const UKVisa = () => {
               },
               {
                 name: "Platinum",
-                price: "£499",
+                price: "£2,000",
                 description: "VIP end-to-end service",
                 features: [
                   "Everything in Premium",

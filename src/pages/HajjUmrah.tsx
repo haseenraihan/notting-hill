@@ -210,7 +210,7 @@ const HajjUmrah = () => {
             </div>
             <div className="flex items-center gap-2">
               <Heart className="w-5 h-5" />
-              15+ Years Experience
+              10+ Years Experience
             </div>
           </div>
         </div>
@@ -310,12 +310,12 @@ const HajjUmrah = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <span className="text-gold text-sm tracking-[0.25em] uppercase mb-4 block">Hajj 2025</span>
+            <span className="text-gold text-sm tracking-[0.25em] uppercase mb-4 block">Hajj 2026</span>
             <h2 className="font-heading text-3xl md:text-4xl">
               Complete Your <span className="italic font-light">Fifth Pillar</span>
             </h2>
             <p className="font-body text-primary-foreground/70 max-w-2xl mx-auto mt-4">
-              Limited spaces available for Hajj 2025. Book early to secure your place on this sacred journey.
+              Limited spaces available for Hajj 2026. Book early to secure your place on this sacred journey.
             </p>
           </motion.div>
 
@@ -364,7 +364,7 @@ const HajjUmrah = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <span className="section-label">Ramadan 2025</span>
+            <span className="section-label">Ramadan 2026</span>
             <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-4">
               Ramadan Umrah <span className="italic font-light">Packages</span>
             </h2>
@@ -486,11 +486,11 @@ const HajjUmrah = () => {
               <h3 className="font-heading text-2xl text-foreground mb-6">Upcoming Departures</h3>
               <div className="space-y-4">
                 {[
-                  { date: "January 2025", type: "Umrah", availability: "Limited" },
-                  { date: "February 2025", type: "Umrah", availability: "Available" },
-                  { date: "March 2025", type: "Umrah (Ramadan)", availability: "Limited" },
-                  { date: "April 2025", type: "Umrah (Ramadan)", availability: "Almost Full" },
-                  { date: "June 2025", type: "Hajj", availability: "Booking Open" },
+                  { date: "January 2026", type: "Umrah", availability: "Fully Booked" },
+                  { date: "February 2026", type: "Umrah", availability: "Almost Full" },
+                  { date: "March 2026", type: "Umrah (Ramadan)", availability: "Limited" },
+                  { date: "April 2026", type: "Umrah (Ramadan)", availability: "Available" },
+                  { date: "June 2026", type: "Hajj", availability: "Booking Open" },
                 ].map((departure, index) => (
                   <div key={index} className="flex items-center justify-between py-3 border-b border-border last:border-0">
                     <div className="flex items-center gap-3">
@@ -501,7 +501,9 @@ const HajjUmrah = () => {
                       </div>
                     </div>
                     <span className={`text-xs px-2 py-1 rounded-full ${
-                      departure.availability === "Almost Full" 
+                      departure.availability === "Fully Booked"
+                        ? "bg-muted text-muted-foreground"
+                        : departure.availability === "Almost Full" 
                         ? "bg-destructive/10 text-destructive"
                         : departure.availability === "Limited"
                         ? "bg-gold/10 text-gold"

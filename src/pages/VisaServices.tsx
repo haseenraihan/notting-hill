@@ -112,19 +112,19 @@ const services = [
 ];
 
 const popularVisas = [
-  { dest: "Schengen Tourist Visa", price: "From £199", time: "15-20 days" },
-  { dest: "USA B1/B2 Visa", price: "From £349", time: "Interview based" },
-  { dest: "Canada Tourist Visa", price: "From £249", time: "20-30 days" },
-  { dest: "Australia Visitor Visa", price: "From £279", time: "15-25 days" },
-  { dest: "Dubai Tourist Visa", price: "From £99", time: "3-5 days" },
-  { dest: "UK Standard Visitor", price: "From £299", time: "15-20 days" },
+  { dest: "Schengen Tourist Visa", price: "From £500", time: "15-20 days" },
+  { dest: "USA B1/B2 Visa", price: "From £1,000", time: "Interview based" },
+  { dest: "Canada Tourist Visa", price: "From £2,000", time: "20-30 days" },
+  { dest: "Australia Visitor Visa", price: "From £2,000", time: "15-25 days" },
+  { dest: "Dubai Tourist Visa", price: "From £500", time: "3-5 days" },
+  { dest: "UK Standard Visitor", price: "From £1,250", time: "15-20 days" },
   { dest: "Saudi Arabia Visa", price: "From £149", time: "5-7 days" },
-  { dest: "Turkey e-Visa", price: "From £79", time: "24 hours" },
+  { dest: "Turkey e-Visa", price: "From £200", time: "24 hours" },
 ];
 
 const stats = [
   { number: "100+", label: "Countries Covered" },
-  { number: "25,000+", label: "Visas Processed" },
+  { number: "1,000+", label: "Visas Processed" },
   { number: "96%", label: "Success Rate" },
   { number: "24/7", label: "Support Available" },
 ];
@@ -362,9 +362,9 @@ const VisaServices = () => {
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
               Ready to <span className="italic font-light">Travel the World?</span>
             </h2>
-            <p className="font-body text-muted-foreground text-lg mb-8">
-              Tell us your destination and we'll handle the rest. Free consultation for all visa enquiries.
-            </p>
+          <p className="font-body text-muted-foreground text-lg mb-8">
+            Tell us your destination and we'll handle the rest. Book a consultation for all visa enquiries.
+          </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button variant="gold" size="lg" asChild>
                 <Link to="/contact">
