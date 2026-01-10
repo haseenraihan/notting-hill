@@ -267,7 +267,7 @@ const SummerSchools = () => {
               <Button variant="heroOutline" size="lg" className="text-base" asChild>
                 <a href="tel:+447385608114">
                   <Phone className="w-5 h-5 mr-2" />
-                  Free Consultation
+                  Speak to an Advisor
                 </a>
               </Button>
             </div>
@@ -306,7 +306,7 @@ const SummerSchools = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <span className="section-label">Summer 2025</span>
+            <span className="section-label">Summer 2026</span>
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
               Our <span className="italic font-light">Programs</span>
             </h2>

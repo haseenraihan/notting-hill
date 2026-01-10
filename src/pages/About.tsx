@@ -14,7 +14,7 @@ const team = [
     name: "Haseen Raihan",
     role: "Founder & CEO",
     image: haseenImage,
-    bio: "After completing his Bachelor's in Banking and Finance in 2025, Haseen founded Notting Hill Voyages to help people achieve their UK visit visa and travel dreams.",
+    bio: "After completing his Bachelor's in Banking and Finance in 2025, Haseen founded Notting Hill Voyages to help people achieve their UK visit visa and travel dreams. With 10 years of experience in the travel industry, he brings expertise and passion to every client journey.",
   },
 ];
 
@@ -42,9 +42,10 @@ const values = [
 ];
 
 const milestones = [
-  { year: "2025", event: "Founded by Haseen Raihan in Sylhet, Bangladesh" },
-  { year: "2025", event: "Launched UK Visit Visa consultation services" },
-  { year: "2025", event: "Expanded to Student Visa and Travel Packages" },
+  { year: "2016", event: "Founded by Haseen Raihan in Sylhet, Bangladesh" },
+  { year: "2018", event: "Launched UK Visit Visa consultation services" },
+  { year: "2022", event: "Expanded to Student Visa and Travel Packages" },
+  { year: "2026", event: "1,000+ visas processed with 98% success rate" },
 ];
 
 const About = () => {

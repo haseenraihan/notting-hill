@@ -49,7 +49,7 @@ const WhyChooseSection = () => {
             </h2>
             <p className="font-body text-muted-foreground text-lg leading-relaxed mb-8">
               At Notting Hill Voyages, we believe travel should be transformative. 
-              With over 25 years of expertise, we've mastered the art of creating 
+              With over 10 years of expertise, we've mastered the art of creating 
               journeys that exceed expectations and create lasting memories.
             </p>
 
@@ -58,7 +58,7 @@ const WhyChooseSection = () => {
               {[
                 { value: "500+", label: "Destinations" },
                 { value: "98%", label: "Client Satisfaction" },
-                { value: "25+", label: "Years Experience" },
+                { value: "10+", label: "Years Experience" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center lg:text-left">
                   <div className="font-heading text-3xl md:text-4xl text-gold mb-1">

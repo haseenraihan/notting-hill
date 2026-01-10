@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, ChevronDown, Plane, GraduationCap, Globe, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const mainNavLinks = [
   { name: "Home", path: "/" },
@@ -183,8 +184,9 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* CTA Button */}
+            {/* CTA Button & Theme Toggle */}
             <div className="hidden lg:flex items-center gap-4">
+              <ThemeToggle />
               <a href="tel:+447385608114" className={`flex items-center gap-2 text-sm transition-colors duration-300 ${
                 isScrolled ? "text-muted-foreground hover:text-foreground" : "text-primary-foreground/80 hover:text-primary-foreground"
               }`}>
@@ -197,15 +199,18 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`lg:hidden p-2 rounded-lg transition-colors ${
-                isScrolled ? "text-foreground hover:bg-secondary" : "text-primary-foreground hover:bg-primary-foreground/10"
-              }`}
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            <div className="flex lg:hidden items-center gap-3">
+              <ThemeToggle />
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={`p-2 rounded-lg transition-colors ${
+                  isScrolled ? "text-foreground hover:bg-secondary" : "text-primary-foreground hover:bg-primary-foreground/10"
+                }`}
+                aria-label="Toggle menu"
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
       </motion.nav>

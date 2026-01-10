@@ -25,7 +25,7 @@ const Footer = () => {
             Ready to Start Your Journey?
           </h2>
           <p className="text-primary-foreground/70 max-w-2xl mx-auto mb-8 text-lg">
-            Let us help you make your travel dreams a reality. Contact us today for a free consultation.
+            Let us help you make your travel dreams a reality. Contact us today to book a consultation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
