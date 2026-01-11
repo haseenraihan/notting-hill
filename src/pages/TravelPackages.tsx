@@ -19,16 +19,18 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 
-import africaImage from "@/assets/destination-africa.jpg";
-import maldivesImage from "@/assets/destination-maldives.jpg";
-import japanImage from "@/assets/destination-japan.jpg";
-import moroccoImage from "@/assets/destination-morocco.jpg";
-import santoriniImage from "@/assets/destination-santorini.jpg";
-import turkeyImage from "@/assets/destination-turkey.jpg";
-import dubaiImage from "@/assets/destination-dubai.jpg";
-import switzerlandImage from "@/assets/destination-switzerland.jpg";
-import baliImage from "@/assets/destination-bali.jpg";
-import vietnamImage from "@/assets/destination-vietnam.jpg";
+import turkeyImage from "@/assets/travel-turkey-istanbul.jpg";
+import dubaiImage from "@/assets/travel-uae-dubai.jpg";
+import egyptImage from "@/assets/travel-egypt-giza.jpg";
+import maldivesImage from "@/assets/travel-maldives-villas.jpg";
+import switzerlandImage from "@/assets/travel-switzerland-alps.jpg";
+import moroccoImage from "@/assets/travel-morocco-marrakech.jpg";
+import thailandImage from "@/assets/travel-thailand-bangkok.jpg";
+import baliImage from "@/assets/travel-bali-rice-terraces.jpg";
+import santoriniImage from "@/assets/travel-greece-santorini.jpg";
+import vietnamImage from "@/assets/travel-vietnam-halong.jpg";
+import tanzaniaImage from "@/assets/travel-tanzania-safari.jpg";
+import japanImage from "@/assets/travel-japan-kyoto.jpg";
 
 const destinations = [
   {
@@ -66,7 +68,7 @@ const destinations = [
     price: "£1,099",
     priceNote: "per person",
     rating: 4.7,
-    image: africaImage,
+    image: egyptImage,
     highlights: ["Pyramids of Giza", "Nile cruise", "Valley of Kings", "Red Sea beach", "Temple of Karnak"],
     includes: ["Flights", "Hotels & cruise", "Full board on cruise", "All transfers", "Entrance fees"],
     category: "Adventure",
@@ -119,7 +121,7 @@ const destinations = [
     price: "£1,199",
     priceNote: "per person",
     rating: 4.8,
-    image: baliImage,
+    image: thailandImage,
     highlights: ["Grand Palace", "Island hopping", "Thai cooking class", "Temple tours", "Beach relaxation"],
     includes: ["Flights", "4-star hotels", "Breakfast", "Island tours", "Cooking class"],
     category: "Beach",
@@ -171,7 +173,7 @@ const destinations = [
     price: "£2,499",
     priceNote: "per person",
     rating: 5.0,
-    image: africaImage,
+    image: tanzaniaImage,
     highlights: ["Serengeti safari", "Ngorongoro Crater", "Big Five", "Zanzibar beaches", "Stone Town"],
     includes: ["Flights", "Safari lodges", "Beach resort", "Game drives", "All meals on safari"],
     category: "Adventure",
