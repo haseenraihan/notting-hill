@@ -22,10 +22,13 @@ import { Button } from "@/components/ui/button";
 import africaImage from "@/assets/destination-africa.jpg";
 import maldivesImage from "@/assets/destination-maldives.jpg";
 import japanImage from "@/assets/destination-japan.jpg";
-import italyImage from "@/assets/destination-italy.jpg";
 import moroccoImage from "@/assets/destination-morocco.jpg";
-import patagoniaImage from "@/assets/destination-patagonia.jpg";
-import santoriniImage from "@/assets/hero-santorini.jpg";
+import santoriniImage from "@/assets/destination-santorini.jpg";
+import turkeyImage from "@/assets/destination-turkey.jpg";
+import dubaiImage from "@/assets/destination-dubai.jpg";
+import switzerlandImage from "@/assets/destination-switzerland.jpg";
+import baliImage from "@/assets/destination-bali.jpg";
+import vietnamImage from "@/assets/destination-vietnam.jpg";
 
 const destinations = [
   {
@@ -36,7 +39,7 @@ const destinations = [
     price: "£899",
     priceNote: "per person",
     rating: 4.9,
-    image: italyImage,
+    image: turkeyImage,
     highlights: ["Hot air balloon ride", "Hagia Sophia", "Blue Mosque", "Grand Bazaar", "Cave hotels"],
     includes: ["Flights", "4-star hotels", "Breakfast", "Transfers", "Tours"],
     category: "Cultural",
@@ -49,7 +52,7 @@ const destinations = [
     price: "£699",
     priceNote: "per person",
     rating: 4.8,
-    image: santoriniImage,
+    image: dubaiImage,
     highlights: ["Burj Khalifa", "Desert safari", "Dubai Mall", "Palm Jumeirah", "Ferrari World"],
     includes: ["Flights", "4-star hotels", "Breakfast", "Desert safari", "City tour"],
     category: "Luxury",
@@ -90,7 +93,7 @@ const destinations = [
     price: "£1,299",
     priceNote: "per person",
     rating: 4.9,
-    image: patagoniaImage,
+    image: switzerlandImage,
     highlights: ["Jungfrau peak", "Lake Lucerne cruise", "Swiss chocolate tour", "Mountain railways", "Alpine villages"],
     includes: ["Flights", "3-star hotels", "Swiss Travel Pass", "Breakfast", "Guided tours"],
     category: "Scenic",
@@ -116,7 +119,7 @@ const destinations = [
     price: "£1,199",
     priceNote: "per person",
     rating: 4.8,
-    image: japanImage,
+    image: baliImage,
     highlights: ["Grand Palace", "Island hopping", "Thai cooking class", "Temple tours", "Beach relaxation"],
     includes: ["Flights", "4-star hotels", "Breakfast", "Island tours", "Cooking class"],
     category: "Beach",
@@ -129,7 +132,7 @@ const destinations = [
     price: "£999",
     priceNote: "per person",
     rating: 4.9,
-    image: maldivesImage,
+    image: baliImage,
     highlights: ["Rice terraces", "Temple visits", "Ubud arts", "Beach clubs", "Spa retreats"],
     includes: ["Flights", "Villa stay", "Breakfast", "Tours", "Spa session"],
     category: "Wellness",
@@ -155,7 +158,7 @@ const destinations = [
     price: "£1,299",
     priceNote: "per person",
     rating: 4.7,
-    image: japanImage,
+    image: vietnamImage,
     highlights: ["Ha Long Bay cruise", "Hoi An lanterns", "Cu Chi tunnels", "Street food tours", "Rice paddies"],
     includes: ["Flights", "4-star hotels", "Cruise cabin", "Tours", "Cooking class"],
     category: "Adventure",

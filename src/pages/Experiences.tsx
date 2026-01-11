@@ -11,7 +11,7 @@ import japanImage from "@/assets/destination-japan.jpg";
 import italyImage from "@/assets/destination-italy.jpg";
 import moroccoImage from "@/assets/destination-morocco.jpg";
 import patagoniaImage from "@/assets/destination-patagonia.jpg";
-import santoriniImage from "@/assets/hero-santorini.jpg";
+import santoriniImage from "@/assets/destination-santorini.jpg";
 
 const experiences = [
   {
