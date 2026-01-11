@@ -7,13 +7,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    fullName: "",
     email: "",
     phone: "",
     destination: "",
@@ -25,23 +24,30 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.functions.invoke('send-inquiry', {
-        body: formData
-      });
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbyTDdBsiKku0b0kgQhsmReu7ZulbAOoIdt2a81btULxGbc-KA27fmhuMqqbsP5EFEHR3w/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
-      if (error) throw error;
-
+      // With no-cors mode, we can't read the response, so we assume success
       toast({
-        title: "Thank you for your enquiry!",
+        title: "Thank you, your enquiry has been sent",
         description: "Our travel experts will be in touch within 24 hours.",
       });
 
-      setFormData({ name: "", email: "", phone: "", destination: "", message: "" });
+      setFormData({ fullName: "", email: "", phone: "", destination: "", message: "" });
     } catch (error) {
       console.error('Error sending inquiry:', error);
       toast({
-        title: "Something went wrong",
-        description: "Please try again or contact us via WhatsApp.",
+        title: "Something went wrong, please WhatsApp us.",
+        description: "Click the WhatsApp button below to reach us directly.",
         variant: "destructive",
       });
     } finally {
@@ -97,13 +103,13 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="font-body text-sm text-foreground mb-2 block">
+                    <label htmlFor="fullName" className="font-body text-sm text-foreground mb-2 block">
                       Full Name *
                     </label>
                     <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
+                      id="fullName"
+                      name="fullName"
+                      value={formData.fullName}
                       onChange={handleChange}
                       required
                       placeholder="Your full name"

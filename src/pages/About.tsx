@@ -14,7 +14,7 @@ const team = [
     name: "Haseen Raihan",
     role: "Founder & CEO",
     image: haseenImage,
-    bio: "After completing his Bachelor's in Banking and Finance in 2025, Haseen founded Notting Hill Voyages to help people achieve their UK visit visa and travel dreams. With 10 years of experience in the travel industry, he brings expertise and passion to every client journey.",
+    bio: "Haseen founded Notting Hill Voyages in 2016 with a vision to help people achieve their UK visit visa and travel dreams. With 10 years of experience in the travel industry, he brings expertise and passion to every client journey.",
   },
 ];
 
@@ -72,7 +72,7 @@ const About = () => {
               About <span className="italic font-light">Notting Hill Voyages</span>
             </h1>
             <p className="font-body text-primary-foreground/80 text-lg leading-relaxed">
-              Founded in 2025, we're dedicated to making travel dreams come true through 
+              Founded in 2016, we're dedicated to making travel dreams come true through 
               expert visa assistance and personalized travel experiences.
             </p>
           </motion.div>
@@ -94,10 +94,9 @@ const About = () => {
               </h2>
               <div className="space-y-4 font-body text-muted-foreground leading-relaxed">
                 <p>
-                  Notting Hill Voyages was founded in 2025 by Haseen Raihan, right after 
-                  completing his Bachelor's degree in Banking and Finance. What started 
+                  Notting Hill Voyages was founded in 2016 by Haseen Raihan. What started 
                   as a passion for helping friends and family navigate the UK visa process 
-                  has grown into a full-service travel consultancy.
+                  has grown into a full-service travel consultancy with 10 years of expertise.
                 </p>
                 <p>
                   Based in Sylhet, Bangladesh, we specialize in UK visit visas, student visas, 
