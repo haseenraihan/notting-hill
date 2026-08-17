@@ -1,22 +1,27 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { 
-  Globe, 
-  CheckCircle2, 
-  Plane,
+import { useState } from "react";
+import {
+  Globe,
+  CheckCircle2,
+  Palmtree,
   Clock,
-  Shield,
+  Home,
   ArrowRight,
+  ArrowRightLeft,
   Phone,
-  FileText,
-  Users,
-  Award,
+  HardHat,
+  Briefcase,
+  Sparkles,
   MapPin,
-  Star
+  Star,
+  ChevronRight,
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
+import DetailDialog from "@/components/shared/DetailDialog";
+import { regionDetails } from "@/lib/detailContent";
 
 import santoriniImage from "@/assets/hero-santorini.jpg";
 
@@ -67,32 +72,32 @@ const regions = [
 
 const visaTypes = [
   {
-    icon: Plane,
+    icon: Palmtree,
     title: "Tourist Visas",
     description: "Holiday and leisure travel visas for worldwide destinations",
   },
   {
-    icon: Users,
+    icon: Briefcase,
     title: "Business Visas",
     description: "For conferences, meetings, and short-term business activities",
   },
   {
-    icon: Globe,
+    icon: ArrowRightLeft,
     title: "Transit Visas",
     description: "Connecting flights and stopovers requiring visa clearance",
   },
   {
-    icon: FileText,
+    icon: HardHat,
     title: "Work Permits",
     description: "Employment visas and work authorization documents",
   },
   {
-    icon: Shield,
+    icon: Home,
     title: "Residence Permits",
     description: "Long-term stay and settlement applications",
   },
   {
-    icon: Award,
+    icon: Sparkles,
     title: "Special Categories",
     description: "Medical, sporting events, and cultural exchange visas",
   },
@@ -130,6 +135,8 @@ const stats = [
 ];
 
 const VisaServices = () => {
+  const [activeRegion, setActiveRegion] = useState<string | null>(null);
+
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
@@ -224,7 +231,18 @@ const VisaServices = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`p-6 rounded-xl bg-card shadow-card border ${region.popular ? 'border-gold/30' : 'border-border'}`}
+                whileHover={{ y: -6 }}
+                onClick={() => setActiveRegion(region.name)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setActiveRegion(region.name);
+                  }
+                }}
+                aria-label={`View ${region.name} visa details`}
+                className={`group cursor-pointer p-6 rounded-xl bg-card shadow-card border transition-all duration-300 hover:shadow-lifted focus:outline-none focus-visible:ring-2 focus-visible:ring-gold ${region.popular ? 'border-gold/30 hover:border-gold' : 'border-border hover:border-gold/40'}`}
               >
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-heading text-xl text-foreground">{region.name}</h3>
@@ -245,6 +263,10 @@ const VisaServices = () => {
                       {country}
                     </span>
                   ))}
+                </div>
+                <div className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-gold">
+                  View details
+                  <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </div>
               </motion.div>
             ))}
@@ -381,6 +403,12 @@ const VisaServices = () => {
           </motion.div>
         </div>
       </section>
+
+      <DetailDialog
+        content={activeRegion ? regionDetails[activeRegion] ?? null : null}
+        open={activeRegion !== null}
+        onOpenChange={(open) => !open && setActiveRegion(null)}
+      />
 
       <Footer />
     </main>
