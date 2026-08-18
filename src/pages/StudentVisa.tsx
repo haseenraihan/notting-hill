@@ -1,14 +1,17 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { 
-  GraduationCap, 
-  Globe, 
-  CheckCircle2, 
-  BookOpen, 
+import { useState } from "react";
+import {
+  GraduationCap,
+  Globe,
+  CheckCircle2,
+  BookOpen,
   Building2,
-  Briefcase,
-  Shield,
+  Plane,
+  FileCheck,
+  Trophy,
   ArrowRight,
+  ChevronRight,
   Phone,
   Users,
   Award,
@@ -17,6 +20,8 @@ import {
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
+import DetailDialog from "@/components/shared/DetailDialog";
+import { studyDestinationDetails } from "@/lib/detailContent";
 
 import japanImage from "@/assets/destination-japan.jpg";
 
@@ -91,17 +96,17 @@ const services = [
     description: "Complete assistance with applications to multiple universities, maximizing your acceptance chances",
   },
   {
-    icon: Shield,
+    icon: FileCheck,
     title: "Visa Application",
     description: "End-to-end visa support including documentation, financial planning, and interview preparation",
   },
   {
-    icon: Briefcase,
+    icon: Trophy,
     title: "Scholarship Guidance",
     description: "Identify and apply for scholarships, grants, and financial aid opportunities",
   },
   {
-    icon: Globe,
+    icon: Plane,
     title: "Pre-Departure Support",
     description: "Accommodation, travel arrangements, and essential guidance before you leave",
   },
@@ -144,6 +149,8 @@ const popularPrograms = [
 ];
 
 const StudentVisa = () => {
+  const [activeCountry, setActiveCountry] = useState<string | null>(null);
+
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
@@ -238,7 +245,18 @@ const StudentVisa = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="p-6 rounded-xl bg-card shadow-card border border-border hover:border-gold/30 transition-colors group"
+                whileHover={{ y: -6 }}
+                onClick={() => setActiveCountry(country.name)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setActiveCountry(country.name);
+                  }
+                }}
+                aria-label={`View study options in ${country.name}`}
+                className="cursor-pointer p-6 rounded-xl bg-card shadow-card border border-border hover:border-gold/40 hover:shadow-lifted transition-all duration-300 group focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
               >
                 <div className="flex items-center gap-4 mb-4">
                   <span className="text-4xl">{country.flag}</span>
@@ -251,6 +269,10 @@ const StudentVisa = () => {
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/10 text-gold text-xs">
                   <Award className="w-3 h-3" />
                   {country.highlight}
+                </div>
+                <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gold">
+                  View details
+                  <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </div>
               </motion.div>
             ))}
@@ -402,6 +424,12 @@ const StudentVisa = () => {
           </motion.div>
         </div>
       </section>
+
+      <DetailDialog
+        content={activeCountry ? studyDestinationDetails[activeCountry] ?? null : null}
+        open={activeCountry !== null}
+        onOpenChange={(open) => !open && setActiveCountry(null)}
+      />
 
       <Footer />
     </main>

@@ -19,8 +19,9 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 
-import makkahImage from "@/assets/destination-makkah.jpg";
-import medinaImage from "@/assets/destination-medina.jpg";
+import makkahImage from "@/assets/hajj-kaaba.jpg";
+import medinaImage from "@/assets/hajj-madinah.jpg";
+import minaImage from "@/assets/hajj-mina.jpg";
 
 const packages = [
   {
@@ -310,12 +311,12 @@ const HajjUmrah = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <span className="text-gold text-sm tracking-[0.25em] uppercase mb-4 block">Hajj 2026</span>
+            <span className="text-gold text-sm tracking-[0.25em] uppercase mb-4 block">Hajj 2027</span>
             <h2 className="font-heading text-3xl md:text-4xl">
               Complete Your <span className="italic font-light">Fifth Pillar</span>
             </h2>
             <p className="font-body text-primary-foreground/70 max-w-2xl mx-auto mt-4">
-              Limited spaces available for Hajj 2026. Book early to secure your place on this sacred journey.
+              Limited spaces available for Hajj 2027. Book early to secure your place on this sacred journey.
             </p>
           </motion.div>
 
@@ -364,7 +365,7 @@ const HajjUmrah = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <span className="section-label">Ramadan 2026</span>
+            <span className="section-label">Ramadan 2027</span>
             <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-4">
               Ramadan Umrah <span className="italic font-light">Packages</span>
             </h2>
@@ -466,6 +467,29 @@ const HajjUmrah = () => {
                 Makkah and Madinah, guided by knowledgeable scholars who explain the historical 
                 and spiritual significance of each location.
               </p>
+              <div className="grid grid-cols-3 gap-3 mb-8">
+                {[
+                  { src: makkahImage, alt: "The Kaaba at Masjid al-Haram in Makkah" },
+                  { src: medinaImage, alt: "The Prophet's Mosque and green dome in Madinah" },
+                  { src: minaImage, alt: "The tent city of Mina during Hajj" },
+                ].map((img, i) => (
+                  <motion.div
+                    key={img.alt}
+                    initial={{ opacity: 0, scale: 0.94 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden rounded-xl aspect-[4/3]"
+                  >
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                    />
+                  </motion.div>
+                ))}
+              </div>
               <div className="grid sm:grid-cols-2 gap-3">
                 {ziyaratPlaces.map((place, index) => (
                   <div key={index} className="flex items-center gap-2">
@@ -486,11 +510,11 @@ const HajjUmrah = () => {
               <h3 className="font-heading text-2xl text-foreground mb-6">Upcoming Departures</h3>
               <div className="space-y-4">
                 {[
-                  { date: "January 2026", type: "Umrah", availability: "Fully Booked" },
-                  { date: "February 2026", type: "Umrah", availability: "Almost Full" },
-                  { date: "March 2026", type: "Umrah (Ramadan)", availability: "Limited" },
-                  { date: "April 2026", type: "Umrah (Ramadan)", availability: "Available" },
-                  { date: "June 2026", type: "Hajj", availability: "Booking Open" },
+                  { date: "September 2026", type: "Umrah", availability: "Almost Full" },
+                  { date: "October 2026", type: "Umrah (Half Term)", availability: "Limited" },
+                  { date: "December 2026", type: "Umrah (Winter)", availability: "Available" },
+                  { date: "February 2027", type: "Umrah (Ramadan)", availability: "Booking Open" },
+                  { date: "May 2027", type: "Hajj", availability: "Booking Open" },
                 ].map((departure, index) => (
                   <div key={index} className="flex items-center justify-between py-3 border-b border-border last:border-0">
                     <div className="flex items-center gap-3">
