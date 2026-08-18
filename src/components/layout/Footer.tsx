@@ -7,7 +7,7 @@ const Footer = forwardRef<HTMLElement>((_props, ref) => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-primary text-primary-foreground overflow-hidden">
+    <footer ref={ref} className="relative bg-primary text-primary-foreground overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl" />
@@ -175,6 +175,8 @@ const Footer = forwardRef<HTMLElement>((_props, ref) => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = "Footer";
 
 export default Footer;
