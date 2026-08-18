@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Twitter, Mail, Phone, MapPin, ArrowUpRight, Linkedin, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { forwardRef } from "react";
 
-const Footer = () => {
+const Footer = forwardRef<HTMLElement>((_props, ref) => {
   const currentYear = new Date().getFullYear();
 
   return (
