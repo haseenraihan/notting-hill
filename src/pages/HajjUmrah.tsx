@@ -467,6 +467,29 @@ const HajjUmrah = () => {
                 Makkah and Madinah, guided by knowledgeable scholars who explain the historical 
                 and spiritual significance of each location.
               </p>
+              <div className="grid grid-cols-3 gap-3 mb-8">
+                {[
+                  { src: makkahImage, alt: "The Kaaba at Masjid al-Haram in Makkah" },
+                  { src: medinaImage, alt: "The Prophet's Mosque and green dome in Madinah" },
+                  { src: minaImage, alt: "The tent city of Mina during Hajj" },
+                ].map((img, i) => (
+                  <motion.div
+                    key={img.alt}
+                    initial={{ opacity: 0, scale: 0.94 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden rounded-xl aspect-[4/3]"
+                  >
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                    />
+                  </motion.div>
+                ))}
+              </div>
               <div className="grid sm:grid-cols-2 gap-3">
                 {ziyaratPlaces.map((place, index) => (
                   <div key={index} className="flex items-center gap-2">
