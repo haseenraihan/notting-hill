@@ -306,7 +306,7 @@ const SummerSchools = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <span className="section-label">Summer 2026</span>
+            <span className="section-label">Summer 2027</span>
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
               Our <span className="italic font-light">Programs</span>
             </h2>
